@@ -86,10 +86,15 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>WIN32;_DEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +154,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="client.h" />
+    <ClInclude Include="geom\angle_deg.h" />
+    <ClInclude Include="geom\circle_2d.h" />
+    <ClInclude Include="geom\convex_hull.h" />
+    <ClInclude Include="geom\line_2d.h" />
+    <ClInclude Include="geom\matrix_2d.h" />
+    <ClInclude Include="geom\polygon_2d.h" />
+    <ClInclude Include="geom\ray_2d.h" />
+    <ClInclude Include="geom\rect_2d.h" />
+    <ClInclude Include="geom\region_2d.h" />
+    <ClInclude Include="geom\sector_2d.h" />
+    <ClInclude Include="geom\segment_2d.h" />
+    <ClInclude Include="geom\size_2d.h" />
+    <ClInclude Include="geom\triangle_2d.h" />
+    <ClInclude Include="geom\vector_2d.h" />
     <ClInclude Include="parsian.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -156,6 +175,18 @@
   <ItemGroup>
     <ClCompile Include="client.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="geom\angle_deg.cpp" />
+    <ClCompile Include="geom\circle_2d.cpp" />
+    <ClCompile Include="geom\convex_hull.cpp" />
+    <ClCompile Include="geom\line_2d.cpp" />
+    <ClCompile Include="geom\matrix_2d.cpp" />
+    <ClCompile Include="geom\polygon_2d.cpp" />
+    <ClCompile Include="geom\ray_2d.cpp" />
+    <ClCompile Include="geom\rect_2d.cpp" />
+    <ClCompile Include="geom\sector_2d.cpp" />
+    <ClCompile Include="geom\segment_2d.cpp" />
+    <ClCompile Include="geom\triangle_2d.cpp" />
+    <ClCompile Include="geom\vector_2d.cpp" />
     <ClCompile Include="parsian.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

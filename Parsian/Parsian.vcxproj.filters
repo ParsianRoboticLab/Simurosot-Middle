@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\geom">
+      <UniqueIdentifier>{8a3f2842-6fd0-4773-be5e-15a4936c5ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\geom">
+      <UniqueIdentifier>{7028ca8a-b54a-4651-a870-4c2943c3a298}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +33,48 @@
     <ClInclude Include="client.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="geom\angle_deg.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\circle_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\convex_hull.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\line_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\matrix_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\polygon_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\ray_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\rect_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\region_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\sector_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\segment_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\size_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\triangle_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
+    <ClInclude Include="geom\vector_2d.h">
+      <Filter>Header Files\geom</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -40,6 +88,42 @@
     </ClCompile>
     <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\angle_deg.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\circle_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\convex_hull.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\line_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\matrix_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\polygon_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\ray_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\rect_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\sector_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\segment_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\triangle_2d.cpp">
+      <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="geom\vector_2d.cpp">
+      <Filter>Source Files\geom</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdafx.h"
 #include "client.h"
 #include <iostream>
 #define debugger
