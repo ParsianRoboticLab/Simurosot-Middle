@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\proto">
+      <UniqueIdentifier>{210872df-3c1e-48e2-81b5-085caddb38ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proto">
+      <UniqueIdentifier>{8df82b25-0b63-419d-bc14-0da4e04b7e82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -24,7 +30,19 @@
     <ClInclude Include="parsian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="client.h">
+    <ClInclude Include="proto\messages_parsian_simurosot_data_wrapper.pb.h">
+      <Filter>Header Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\messages_parsian_simurosot_debugs.pb.h">
+      <Filter>Header Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\messages_parsian_simurosot_detection.pb.h">
+      <Filter>Header Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\messages_parsian_simurosot_worldmodel.pb.h">
+      <Filter>Header Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="net\src\msock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +56,19 @@
     <ClCompile Include="parsian.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="client.cpp">
+    <ClCompile Include="proto\messages_parsian_simurosot_data_wrapper.pb.cc">
+      <Filter>Source Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc">
+      <Filter>Source Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc">
+      <Filter>Source Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc">
+      <Filter>Source Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="net\src\msock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

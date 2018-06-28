@@ -14,6 +14,28 @@
 
 
 #include <math.h>
+#include "proto/messages_parsian_simurosot_data_wrapper.pb.h"
+extern "C" {
+#include "net/src/msock.h"
+
+}
+/////////////////////////NETWORK
+
+SOCKET sock;
+struct addrinfo *multicastAddr;
+const char* multicastIP = "224.5.23.2";   /* Arg: IP Multicast address */
+const char* multicastPort = "10010"; /* Arg: Server port */
+char*       sendString;    /* Arg: String to multicast */
+int         sendStringLen; /* Length of string to multicast */
+const int   multicastTTL = 1;  /* Arg: TTL of multicast packets */
+const int   defer_ms = 1;      /* miliseconds to defer in between sending */
+DataWrapper* dataWrapper;
+Frame* detection;
+WorldModel* wm;
+Logs* debugs;
+Draws* draws;
+Header* header;
+/////////////////////////
 
 const long PLAYERS_PER_SIDE = 5;
 const double PI = 3.1415926535;
@@ -61,7 +83,6 @@ typedef struct
 	long whosBall;
 	void *userData;
 } Environment;
-
 
 enum PlayMode {
 	PM_PlayOn = 0,           //  

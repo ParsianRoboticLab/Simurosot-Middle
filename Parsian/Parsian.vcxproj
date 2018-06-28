@@ -23,7 +23,7 @@
     <ProjectGuid>{8F9EB2A6-9200-4D57-A90E-14693FEB6660}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Parsian</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -88,7 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -121,12 +121,15 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/D "_WINSOCK_DEPRECATED_NO_WARNINGS" /D "_CRT_SECURE_NO_WARNINGS" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Strategy\parsian-simurosot\Parsian\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)lib\libprotoc.lib;$(ProjectDir)lib\libprotobuf.lib;$(ProjectDir)lib\libprotobuf-lite.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -137,26 +140,36 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;PARSIAN_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Strategy\parsian-simurosot\Parsian\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)lib\libprotoc.lib;$(ProjectDir)lib\libprotobuf.lib;$(ProjectDir)lib\libprotobuf-lite.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="client.h" />
+    <ClInclude Include="net\src\msock.h" />
     <ClInclude Include="parsian.h" />
+    <ClInclude Include="proto\messages_parsian_simurosot_data_wrapper.pb.h" />
+    <ClInclude Include="proto\messages_parsian_simurosot_debugs.pb.h" />
+    <ClInclude Include="proto\messages_parsian_simurosot_detection.pb.h" />
+    <ClInclude Include="proto\messages_parsian_simurosot_worldmodel.pb.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="client.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="net\src\msock.cpp" />
     <ClCompile Include="parsian.cpp" />
+    <ClCompile Include="proto\messages_parsian_simurosot_data_wrapper.pb.cc" />
+    <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
+    <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />
+    <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
