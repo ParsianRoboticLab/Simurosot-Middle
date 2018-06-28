@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+message Color {
+	float r = 1; // [0-1]
+	float g = 2; // [0-1]
+	float b = 3; // [0-1]
+	float a = 4; // [0-1] 
+}
+
+message Vec2 {
+	float x = 1;
+	float y = 2;
+}
+
+message Vec2D {
+	float x     = 1;
+	float y     = 2;
+	Color color = 3;
+}
+
+message Cir2D {
+	Vec2  center     = 1;
+	float startAngle = 2;
+	float endAngle   = 3;
+	float radius     = 4;
+	bool fill        = 5;
+	Color color      = 6;
+}
+
+message Seg2D {
+	Vec2 origin   = 1;
+	Vec2 terminal = 2;
+	Color color   = 3;
+}
+
+message Rec2D {
+	Vec2 topLeft  = 1;
+	Vec2 BotRight = 2;
+	Color color   = 3;
+	bool fill     = 4;
+}
+
+message Tex2D {
+	Vec2 pos    = 1;
+	float size  = 2;
+	Color color = 3;
+	string data = 4;
+}
+
+message Pol2D {
+	repeated Vec2 vectors = 1;
+	Color color           = 2;
+	bool fill             = 3;
+}
+
+message Draws {
+	repeated Vec2D vectors  = 1;
+	repeated Cir2D circles  = 2;
+	repeated Seg2D segments = 3;
+	repeated Rec2D rects    = 4;
+	repeated Pol2D polygons = 5;
+	repeated Tex2D texts    = 6;
+}
+
+enum LogLevel {
+	LL_DEBUG = 0;
+	LL_INFO  = 1;
+	LL_WARN  = 2;
+	LL_ERROR = 3;
+	LL_FATAL = 4;
+}
+
+message Log {
+	LogLevel level  = 1;
+	string msg      = 2;
+	string file     = 3;
+	string function = 4;
+	string line     = 5;
+}
+
+message Logs {
+	repeated Log msgs = 1;
+}

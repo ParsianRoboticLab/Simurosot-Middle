@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message RBall {
+	float x = 1;
+	float y = 2;		
+}
+
+message RRobot {
+	uint32 id = 1;
+	float x   = 2;
+	float y   = 3;
+	float ang = 4;
+}
+
+message Frame {
+	uint32 frame_number          = 1;
+	RBall ball                    = 2;
+	repeated RRobot robots_yellow = 3;
+	repeated RRobot robots_blue   = 4;
+}
