@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "messages_parsian_simurosot_detection.proto";
+import "messages_parsian_simurosot_worldmodel.proto";
+import "messages_parsian_simurosot_debugs.proto";
+
+message Header {
+	uint32 seq           = 1; // Sequence ID: consecutively increasing ID 
+	uint32 stamp_second  = 2; // TimeStamp Seconds
+	uint32 stamp_nsecond = 3; // TimeStamp NanoSeconds
+}
+
+message DataWrapper {
+	Header header         = 1;
+	Draws draws           = 2;
+	Logs debugs           = 3;
+	Frame detection       = 4;
+	WorldModel worldmodel = 5;
+	
+}

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+message Vector2D {
+	float x = 1;
+	float y = 2;
+}
+
+message MovingObject {
+	uint32 id            = 1;
+	Vector2D pos         = 2;
+	Vector2D vel         = 3;
+	Vector2D acc         = 4;
+	float anguleVelocity = 5;
+	float direction      = 6;
+}
+
+enum Role {
+	UNKNOWN  = 0;
+	GOALIE   = 1;
+	DEFENSE  = 2;
+	MARK     = 3;
+	PLAYMAKE = 4;
+	SUPPORT  = 5;
+	POSITION = 6;
+}
+
+enum GameState {
+	PlayOn             = 0;  
+	FreeBall_LeftTop   = 1;
+	FreeBall_LeftBot   = 2;
+	FreeBall_RightTop  = 3;
+	FreeBall_RightBot  = 4;
+	PlaceKick_Yellow   = 5;
+	PlaceKick_Blue     = 6;
+	PenaltyKick_Yellow = 7;
+	PenaltyKick_Blue   = 8;
+	FreeKick_Yellow    = 9;
+	FreeKick_Blue      = 10;
+	GoalKick_Yellow    = 11;
+	GoalKick_Blue      = 12;
+}
+
+message WorldModel {
+	MovingObject ball = 1;
+	repeated MovingObject robots_yellow = 2;
+	repeated MovingObject robots_blue = 3;
+	bool blue = 4;
+	string mode = 6;
+	GameState gameState = 7;
+}
