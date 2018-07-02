@@ -14,11 +14,24 @@
 
 
 #include <math.h>
-#include "proto/messages_parsian_simurosot_data_wrapper.pb.h"
-extern "C" {
-#include "net/src/msock.h"
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <windows.h>
+#include <iostream>
+#include <fstream>
+#include <thread>
 
+#include "proto/messages_parsian_simurosot_data_wrapper.pb.h"
+#include "soccer.h"
+extern "C" { 
+#include "net/src/msock.h" 
 }
+
+///////// THREAD
+std::thread* thread;
+void worker();
+
 /////////////////////////NETWORK
 
 SOCKET sock;
@@ -35,8 +48,9 @@ WorldModel* wm;
 Logs* debugs;
 Draws* draws;
 Header* header;
+/////////////// LOG
+std::ofstream logs;
 /////////////////////////
-
 const long PLAYERS_PER_SIDE = 5;
 const double PI = 3.1415926535;
 

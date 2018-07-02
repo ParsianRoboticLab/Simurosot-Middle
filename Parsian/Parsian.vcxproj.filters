@@ -45,6 +45,9 @@
     <ClInclude Include="net\src\msock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="soccer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files\proto</Filter>
     </ClCompile>
     <ClCompile Include="net\src\msock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soccer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

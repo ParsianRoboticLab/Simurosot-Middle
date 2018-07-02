@@ -159,6 +159,7 @@
     <ClInclude Include="proto\messages_parsian_simurosot_debugs.pb.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_detection.pb.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_worldmodel.pb.h" />
+    <ClInclude Include="soccer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -170,6 +171,7 @@
     <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc" />
+    <ClCompile Include="soccer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
