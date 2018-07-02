@@ -72,7 +72,6 @@ public:
         : M_top_left( 0.0, 0.0 )
         , M_size( 0.0, 0.0 )
       { }
-private:
     /*!
       \brief constructor
       \param left_x left x
@@ -101,7 +100,6 @@ private:
         , M_size( length, width )
       { }
 
-public:
     /*!
       \brief constructor with variables
       \param top_left top left point
@@ -201,7 +199,6 @@ public:
           return Rect2D( Vector2D( l, t ), Vector2D( r, b ) );
       }
 
-private:
     /*!
       \brief assign new values
       \param left_x left x
@@ -237,7 +234,6 @@ private:
           return *this;
       }
 
-public:
     /*!
       \brief assign new values
       \param top_left top left

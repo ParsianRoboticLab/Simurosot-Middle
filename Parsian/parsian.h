@@ -1,118 +1,28 @@
 #pragma once
 
-// The following ifdef block is the standard way of creating macros which make exporting 
-// from a DLL simpler. All files within this DLL are compiled with the STRATEGY4YELLOW_EXPORTS
-// symbol defined on the command line. this symbol should not be defined on any project
-// that uses this DLL. This way any other project whose source files include this file see 
-// STRATEGY4YELLOW_API functions as being imported from a DLL, wheras this DLL sees symbols
-// defined with this macro as being exported.
 #ifdef PARSIAN_EXPORTS
 #define PARSIAN_API __declspec(dllexport)
 #else
 #define PARSIAN_API __declspec(dllimport)
 #endif
 
-
 #include <math.h>
 #include <time.h>
 #include <stdio.h>
-#include <stdlib.h> 
-#include <windows.h>
+#include <stdlib.h>
+#include <string.h>
 #include <iostream>
 #include <fstream>
 #include <thread>
 
 #include "proto/messages_parsian_simurosot_data_wrapper.pb.h"
 #include "soccer.h"
+#include "base.h"
 extern "C" { 
 #include "net/src/msock.h" 
 }
 
-///////// THREAD
-std::thread* thread;
-void worker();
-
-/////////////////////////NETWORK
-
-SOCKET sock;
-struct addrinfo *multicastAddr;
-const char* multicastIP = "224.5.23.2";   /* Arg: IP Multicast address */
-const char* multicastPort = "10010"; /* Arg: Server port */
-char*       sendString;    /* Arg: String to multicast */
-int         sendStringLen; /* Length of string to multicast */
-const int   multicastTTL = 1;  /* Arg: TTL of multicast packets */
-const int   defer_ms = 1;      /* miliseconds to defer in between sending */
-DataWrapper* dataWrapper;
-Frame* detection;
-WorldModel* wm;
-Logs* debugs;
-Draws* draws;
-Header* header;
-/////////////// LOG
-std::ofstream logs;
-/////////////////////////
-const long PLAYERS_PER_SIDE = 5;
-const double PI = 3.1415926535;
-
-typedef struct
-{
-	double x, y, z;
-} Vector3D;
-
-
-typedef struct
-{
-	long left, right, top, bottom;
-} Bounds;
-
-
-typedef struct
-{
-	Vector3D pos;
-	double rotation;
-	double velocityLeft, velocityRight;
-} Robot;
-
-
-typedef struct
-{
-	Vector3D pos;
-	double rotation;
-} OpponentRobot;
-
-
-typedef struct
-{
-	Vector3D pos;
-} Ball;
-
-
-typedef struct
-{
-	Robot home[PLAYERS_PER_SIDE];
-	OpponentRobot opponent[PLAYERS_PER_SIDE];
-	Ball currentBall, lastBall, predictedBall;
-	Bounds fieldBounds, goalBounds;
-	long gameState;
-	long whosBall;
-	void *userData;
-} Environment;
-
-enum PlayMode {
-	PM_PlayOn = 0,           //  
-	PM_FreeBall_LeftTop,     //   1
-	PM_FreeBall_LeftBot,     //   2
-	PM_FreeBall_RightTop,    //   3
-	PM_FreeBall_RightBot,    //   4
-	PM_PlaceKick_Yellow,     //   5
-	PM_PlaceKick_Blue,       //   6
-	PM_PenaltyKick_Yellow,   //   7
-	PM_PenaltyKick_Blue,     //   8
-	PM_FreeKick_Yellow,      //   9
-	PM_FreeKick_Blue,        //   10
-	PM_GoalKick_Yellow,      //   11
-	PM_GoalKick_Blue         //   12
-};
+#include <windows.h>
 
 
 // #############################################################################################
