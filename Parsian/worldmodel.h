@@ -15,15 +15,16 @@ struct CRobot : public CMovingObject {
     double w, th;
 };
 
-class WorldModel {
+class CWorldModel {
 public:
+    GameState gs; // Game State
+    TColor teamColor;
+
 private:
     CMovingObject ball;
     CRobot our[ROBOT_COUNT];
     CRobot opp[ROBOT_COUNT];
-    GameState gs; // Game State
     unsigned long long loop;
-    TColor teamColor;
 };
 
 #endif // _WORLD_MODEL_HEADER_

@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "base.h"
-#include "proto/messages_parsian_simurosot_worldmodel.pb.h"
+#include "worldmodel.h"
 
 class Soccer
 {
@@ -15,14 +15,13 @@ public:
 	~Soccer();
 
 	void init(const char* _teamName);
-	void updateWM(const WorldModel& _wm);
+	void updateWM(const CWorldModel& _wm);
 	void updateGS(const PlayMode& _gs);
-	void setFormerRobots();
-	void update(const )
-	void getRobots(Robot* _robots);
+	void setFormerRobots(Robot* robots);
+	void setLaterRobots(Robot* robots);
 private:
 	const char* teamName;
-	WorldModel wm;
+	CWorldModel wm;
 	std::thread* m_handle;
 	std::ofstream* logs;
 
