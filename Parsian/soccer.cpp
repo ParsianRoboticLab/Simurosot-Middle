@@ -28,31 +28,31 @@ void Soccer::init(const char* _teamName, bool isYellow) {
 void Soccer::updateGS(const PlayMode& pm) {
 	switch (pm) {
 	case PM_PlayOn:
-		wm->gs = GameState::PlayOn; break;
+		wm->gs = GameMode::PlayOn; break;
 	case PM_FreeBall_LeftTop:
-		wm->gs = GameState::FreeBall_LeftTop; break;
+		wm->gs = GameMode::FreeBall_LeftTop; break;
 	case PM_FreeBall_LeftBot:
-		wm->gs = GameState::FreeBall_LeftBot; break;
+		wm->gs = GameMode::FreeBall_LeftBot; break;
 	case PM_FreeBall_RightTop:
-		wm->gs = GameState::FreeBall_RightTop; break;
+		wm->gs = GameMode::FreeBall_RightTop; break;
 	case PM_FreeBall_RightBot:
-		wm->gs = GameState::FreeBall_RightBot; break;
+		wm->gs = GameMode::FreeBall_RightBot; break;
 	case PM_PlaceKick_Yellow:
-		wm->gs = IFYELLOW(GameState::OurKickOff, GameState::OppKickOff); break;
+		wm->gs = IFYELLOW(GameMode::OurKickOff, GameMode::OppKickOff); break;
 	case PM_PlaceKick_Blue:
-		wm->gs = IFYELLOW(GameState::OppKickOff, GameState::OurKickOff); break;
+		wm->gs = IFYELLOW(GameMode::OppKickOff, GameMode::OurKickOff); break;
 	case PM_PenaltyKick_Yellow:
-		wm->gs = IFYELLOW(GameState::OurPenaltyKick, GameState::OppPenaltyKick); break;
+		wm->gs = IFYELLOW(GameMode::OurPenaltyKick, GameMode::OppPenaltyKick); break;
 	case PM_PenaltyKick_Blue:
-		wm->gs = IFYELLOW(GameState::OppPenaltyKick, GameState::OurPenaltyKick); break;
+		wm->gs = IFYELLOW(GameMode::OppPenaltyKick, GameMode::OurPenaltyKick); break;
 	case PM_FreeKick_Yellow:
-		wm->gs = IFYELLOW(GameState::OurFreeKick, GameState::OppFreeKick); break;
+		wm->gs = IFYELLOW(GameMode::OurFreeKick, GameMode::OppFreeKick); break;
 	case PM_FreeKick_Blue:
-		wm->gs = IFYELLOW(GameState::OppFreeKick, GameState::OurFreeKick); break;
+		wm->gs = IFYELLOW(GameMode::OppFreeKick, GameMode::OurFreeKick); break;
 	case PM_GoalKick_Yellow:
-		wm->gs = IFYELLOW(GameState::OurGoalKick, GameState::OppGoalKick); break;
+		wm->gs = IFYELLOW(GameMode::OurGoalKick, GameMode::OppGoalKick); break;
 	case PM_GoalKick_Blue:
-		wm->gs = IFYELLOW(GameState::OppGoalKick, GameState::OurGoalKick); break;
+		wm->gs = IFYELLOW(GameMode::OppGoalKick, GameMode::OurGoalKick); break;
 	}
 }
 
@@ -65,7 +65,7 @@ void Soccer::updateWM(Environment* _env) {
 
 void Soccer::setFormerRobots(Robot* robots) {
 	switch (wm->gs) {
-	case GameState::FreeBall_LeftTop:
+	case GameMode::FreeBall_LeftTop:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 80;
 		robots[0].rotation = 90;
@@ -82,7 +82,7 @@ void Soccer::setFormerRobots(Robot* robots) {
 		robots[4].pos.y = 130;
 		robots[4].rotation = 0;
 		break;
-	case GameState::FreeBall_LeftBot:
+	case GameMode::FreeBall_LeftBot:
 		break;
 
 		robots[0].pos.x = 5;
@@ -101,9 +101,9 @@ void Soccer::setFormerRobots(Robot* robots) {
 		robots[4].pos.y = 90;
 		robots[4].rotation = 0;
 		break;
-	case GameState::OurKickOff:
+	case GameMode::OurKickOff:
 		break;
-	case GameState::OppPenaltyKick:
+	case GameMode::OppPenaltyKick:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 90;
 		robots[0].rotation = 90;
@@ -122,7 +122,7 @@ void Soccer::setFormerRobots(Robot* robots) {
 		break;
 
 		break;
-	case GameState::OppFreeKick:
+	case GameMode::OppFreeKick:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 90;
 		robots[0].rotation = 90;
@@ -139,7 +139,7 @@ void Soccer::setFormerRobots(Robot* robots) {
 		robots[4].pos.y = 130;
 		robots[4].rotation = 0;
 		break;
-	case GameState::OurGoalKick:
+	case GameMode::OurGoalKick:
 		break;
 
 	default: /* For Case That We Don't Put Our Robots First */
@@ -149,7 +149,7 @@ void Soccer::setFormerRobots(Robot* robots) {
 
 void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball) {
 	switch (wm->gs) {
-	case GameState::FreeBall_RightTop:
+	case GameMode::FreeBall_RightTop:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 80;
 		robots[0].rotation = 90;
@@ -166,7 +166,7 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 		robots[4].pos.y = 130;
 		robots[4].rotation = 0;
 		break;
-	case GameState::FreeBall_RightBot:
+	case GameMode::FreeBall_RightBot:
 		break;
 
 		robots[0].pos.x = 5;
@@ -185,9 +185,9 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 		robots[4].pos.y = 90;
 		robots[4].rotation = 0;
 		break;
-	case GameState::OppKickOff:
+	case GameMode::OppKickOff:
 		break;
-	case GameState::OurPenaltyKick:
+	case GameMode::OurPenaltyKick:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 90;
 		robots[0].rotation = 90;
@@ -206,7 +206,7 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 		break;
 
 		break;
-	case GameState::OurFreeKick:
+	case GameMode::OurFreeKick:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 90;
 		robots[0].rotation = 90;
@@ -223,7 +223,7 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 		robots[4].pos.y = 130;
 		robots[4].rotation = 0;
 		break;
-	case GameState::OppGoalKick:
+	case GameMode::OppGoalKick:
 		break;
 
 	default: /* For Case That We Put Our Robots First */
@@ -232,7 +232,7 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 }
 
 void Soccer::setBall(Vector3D* ball) {
-	if (wm->gs == GameState::OurGoalKick) {
+	if (wm->gs == GameMode::OurGoalKick) {
 		ball->x = 10;
 		ball->y = 70;
 	}
@@ -249,43 +249,43 @@ void Soccer::setBall(Vector3D* ball) {
 
 void Soccer::run() {
 	switch (wm->gs) {
-	case GameState::PlayOn:
+	case GameMode::PlayOn:
 		playon();
 		break;
-	case GameState::FreeBall_LeftTop:
+	case GameMode::FreeBall_LeftTop:
 		freeballLT();
 		break;
-	case GameState::FreeBall_LeftBot:
+	case GameMode::FreeBall_LeftBot:
 		freeballLB();
 		break;
-	case GameState::FreeBall_RightTop:
+	case GameMode::FreeBall_RightTop:
 		freeballRT();
 		break;
-	case GameState::FreeBall_RightBot:
+	case GameMode::FreeBall_RightBot:
 		freeballRB();
 		break;
-	case GameState::OurKickOff:
+	case GameMode::OurKickOff:
 		ourKO();
 		break;
-	case GameState::OppKickOff:
+	case GameMode::OppKickOff:
 		oppKO();
 		break;
-	case GameState::OurPenaltyKick:
+	case GameMode::OurPenaltyKick:
 		ourPK();
 		break;
-	case GameState::OppPenaltyKick:
+	case GameMode::OppPenaltyKick:
 		oppPK();
 		break;
-	case GameState::OurFreeKick:
+	case GameMode::OurFreeKick:
 		ourFK();
 		break;
-	case GameState::OppFreeKick:
+	case GameMode::OppFreeKick:
 		oppFK();
 		break;
-	case GameState::OurGoalKick:
+	case GameMode::OurGoalKick:
 		ourGK();
 		break;
-	case GameState::OppGoalKick:
+	case GameMode::OppGoalKick:
 		oppGK();
 		break;
 	}

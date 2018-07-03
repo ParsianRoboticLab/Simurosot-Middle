@@ -153,7 +153,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="base.h" />
     <ClInclude Include="client.h" />
+    <ClInclude Include="field.h" />
     <ClInclude Include="geom\angle_deg.h" />
     <ClInclude Include="geom\circle_2d.h" />
     <ClInclude Include="geom\convex_hull.h" />
@@ -168,6 +170,7 @@
     <ClInclude Include="geom\size_2d.h" />
     <ClInclude Include="geom\triangle_2d.h" />
     <ClInclude Include="geom\vector_2d.h" />
+    <ClInclude Include="knowledge.h" />
     <ClInclude Include="net\src\msock.h" />
     <ClInclude Include="parsian.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_data_wrapper.pb.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="soccer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="worldmodel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -192,8 +196,22 @@
     <ClCompile Include="geom\segment_2d.cpp" />
     <ClCompile Include="geom\triangle_2d.cpp" />
     <ClCompile Include="geom\vector_2d.cpp" />
+    <ClCompile Include="knowledge.cpp" />
     <ClCompile Include="net\src\msock.cpp" />
     <ClCompile Include="parsian.cpp" />
+    <ClCompile Include="plays\freeball_lb.cpp" />
+    <ClCompile Include="plays\freeball_lt.cpp" />
+    <ClCompile Include="plays\freeball_rb.cpp" />
+    <ClCompile Include="plays\freeball_rt.cpp" />
+    <ClCompile Include="plays\oppfk.cpp" />
+    <ClCompile Include="plays\oppgk.cpp" />
+    <ClCompile Include="plays\oppko.cpp" />
+    <ClCompile Include="plays\opppk.cpp" />
+    <ClCompile Include="plays\ourfk.cpp" />
+    <ClCompile Include="plays\ourgk.cpp" />
+    <ClCompile Include="plays\ourko.cpp" />
+    <ClCompile Include="plays\ourpk.cpp" />
+    <ClCompile Include="plays\playon.cpp" />
     <ClCompile Include="proto\messages_parsian_simurosot_data_wrapper.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />
@@ -205,6 +223,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="worldmodel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

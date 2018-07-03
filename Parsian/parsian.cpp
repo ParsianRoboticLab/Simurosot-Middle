@@ -37,7 +37,7 @@ PARSIAN_API void SetFormerRobots(PlayMode gameState, Robot robots[]) {
 // [OUT] laterRobots : robots data for placing,including position and rotation
 PARSIAN_API void SetLaterRobots(PlayMode gameState, Robot formerRobots[],
 	Vector3D ball, Robot laterRobots[]) {
-	soccer.updateGS(gamestate);
+	soccer.updateGS(gameState);
 	soccer.setLaterRobots(laterRobots, formerRobots, ball);
 }
 
@@ -46,13 +46,14 @@ PARSIAN_API void SetLaterRobots(PlayMode gameState, Robot formerRobots[],
 // [IN] gameState : the state of game
 // [IN] pBall : the position of the ball
 PARSIAN_API void SetBall(PlayMode gameState, Vector3D * pBall) {
-	soccer.updateGS(gamestate);
+	soccer.updateGS(gameState);
 	soccer.setBall(pBall);
 }
 
 // Strategy for your team using centimeter unit, cartesian coordinate system.
 // The origin is at the left bottom of the field.
 PARSIAN_API void RunStrategy(Environment *pEnv) {
+	soccer.updateGS(PM_PlayOn);
 	soccer.updateWM(pEnv);
 	soccer.run();
 }

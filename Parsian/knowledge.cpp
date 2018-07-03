@@ -3,7 +3,7 @@
 
 
 double ballPossession(const CWorldModel* _wm) {
-    if (_wm->ball.x < 0) return 0;
+    if (_wm->getBall().pos.x < 0) return 0;
     else return 1;
 }
 

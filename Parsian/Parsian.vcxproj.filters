@@ -18,11 +18,15 @@
     </Filter>
     <Filter Include="Header Files\geom">
       <UniqueIdentifier>{7028ca8a-b54a-4651-a870-4c2943c3a298}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\proto">
       <UniqueIdentifier>{210872df-3c1e-48e2-81b5-085caddb38ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\proto">
       <UniqueIdentifier>{8df82b25-0b63-419d-bc14-0da4e04b7e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\plays">
+      <UniqueIdentifier>{762f0782-81b8-4217-9de0-7eaca5100b3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +99,21 @@
     <ClInclude Include="geom\vector_2d.h">
       <Filter>Header Files\geom</Filter>
     </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="knowledge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="worldmodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -159,6 +178,51 @@
     </ClCompile>
     <ClCompile Include="geom\vector_2d.cpp">
       <Filter>Source Files\geom</Filter>
+    </ClCompile>
+    <ClCompile Include="knowledge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="worldmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\freeball_lb.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\freeball_lt.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\freeball_rb.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\freeball_rt.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\oppfk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\oppgk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\oppko.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\opppk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\ourfk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\ourgk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\ourko.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\ourpk.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+    <ClCompile Include="plays\playon.cpp">
+      <Filter>Source Files\plays</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

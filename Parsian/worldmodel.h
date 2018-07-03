@@ -4,10 +4,8 @@
 #include "geom.h"
 #include "base.h"
 
-using namespace rcsc;
-
 struct CMovingObject {
-    Vector2D pos, vel, acc;
+    rcsc::Vector2D pos, vel, acc;
 };
 
 struct CRobot : public CMovingObject {
@@ -15,7 +13,7 @@ struct CRobot : public CMovingObject {
     double w, th;
 };
 
-enum class GameState {
+enum class GameMode {
 	PlayOn            = 0,
 	FreeBall_LeftTop  = 1,
 	FreeBall_LeftBot  = 2,
@@ -33,22 +31,22 @@ enum class GameState {
 
 enum class TColor {
 	Yellow = 0,
-	Blue   = 1
-}
+	Blue = 1
+};
 
 class CWorldModel {
 public:
 	CWorldModel();
 	~CWorldModel();
-    GameState gs; // Game State
+    GameMode gs; // Game State
     TColor teamColor;
-	const CMovingObject& ball() { return ball; }
-	const Robot& our(const unsigned int & _id) { return our[_id]; }
-	const Robot& opp(const unsigned int & _id) { return opp[_id]; }
-	const Robot* ourRobots() { return our; } 
-	const Robot* oppRobots() { return opp; }
+	const CMovingObject& getBall() const { return ball; }
+	const CRobot& ourRobot(const unsigned int & _id) const { return our[_id]; }
+	const CRobot& oppRobot(const unsigned int & _id) const { return opp[_id]; }
+	const CRobot* ourRobots() const { return our; } 
+	const CRobot* oppRobots() const { return opp; }
 	void increaseLoop() { loop++; }
-	unsigned long long getLoop() { return loop; }
+	unsigned long long getLoop() const { return loop; }
 	void update(const Environment* _env);
 
 private:

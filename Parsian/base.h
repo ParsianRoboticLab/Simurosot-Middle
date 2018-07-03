@@ -1,3 +1,6 @@
+#ifndef _BASE_HEADER_
+#define _BASE_HEADER_
+
 #define YELLOW
 
 const long ROBOT_COUNT = 5;
@@ -62,3 +65,5 @@ enum PlayMode {
 	PM_GoalKick_Yellow,      //   11
 	PM_GoalKick_Blue         //   12
 };
+
+#endif _BASE_HEADER_
