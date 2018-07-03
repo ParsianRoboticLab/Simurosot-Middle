@@ -476,29 +476,29 @@ class WorldModel : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // repeated .MovingObject robots_yellow = 2;
-  int robots_yellow_size() const;
-  void clear_robots_yellow();
-  static const int kRobotsYellowFieldNumber = 2;
-  ::MovingObject* mutable_robots_yellow(int index);
+  // repeated .MovingObject our_robots = 2;
+  int our_robots_size() const;
+  void clear_our_robots();
+  static const int kOurRobotsFieldNumber = 2;
+  ::MovingObject* mutable_our_robots(int index);
   ::google::protobuf::RepeatedPtrField< ::MovingObject >*
-      mutable_robots_yellow();
-  const ::MovingObject& robots_yellow(int index) const;
-  ::MovingObject* add_robots_yellow();
+      mutable_our_robots();
+  const ::MovingObject& our_robots(int index) const;
+  ::MovingObject* add_our_robots();
   const ::google::protobuf::RepeatedPtrField< ::MovingObject >&
-      robots_yellow() const;
+      our_robots() const;
 
-  // repeated .MovingObject robots_blue = 3;
-  int robots_blue_size() const;
-  void clear_robots_blue();
-  static const int kRobotsBlueFieldNumber = 3;
-  ::MovingObject* mutable_robots_blue(int index);
+  // repeated .MovingObject opp_robots = 3;
+  int opp_robots_size() const;
+  void clear_opp_robots();
+  static const int kOppRobotsFieldNumber = 3;
+  ::MovingObject* mutable_opp_robots(int index);
   ::google::protobuf::RepeatedPtrField< ::MovingObject >*
-      mutable_robots_blue();
-  const ::MovingObject& robots_blue(int index) const;
-  ::MovingObject* add_robots_blue();
+      mutable_opp_robots();
+  const ::MovingObject& opp_robots(int index) const;
+  ::MovingObject* add_opp_robots();
   const ::google::protobuf::RepeatedPtrField< ::MovingObject >&
-      robots_blue() const;
+      opp_robots() const;
 
   // string mode = 6;
   void clear_mode();
@@ -542,8 +542,8 @@ class WorldModel : public ::google::protobuf::Message /* @@protoc_insertion_poin
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::MovingObject > robots_yellow_;
-  ::google::protobuf::RepeatedPtrField< ::MovingObject > robots_blue_;
+  ::google::protobuf::RepeatedPtrField< ::MovingObject > our_robots_;
+  ::google::protobuf::RepeatedPtrField< ::MovingObject > opp_robots_;
   ::google::protobuf::internal::ArenaStringPtr mode_;
   ::MovingObject* ball_;
   bool blue_;
@@ -856,64 +856,64 @@ inline void WorldModel::set_allocated_ball(::MovingObject* ball) {
   // @@protoc_insertion_point(field_set_allocated:WorldModel.ball)
 }
 
-// repeated .MovingObject robots_yellow = 2;
-inline int WorldModel::robots_yellow_size() const {
-  return robots_yellow_.size();
+// repeated .MovingObject our_robots = 2;
+inline int WorldModel::our_robots_size() const {
+  return our_robots_.size();
 }
-inline void WorldModel::clear_robots_yellow() {
-  robots_yellow_.Clear();
+inline void WorldModel::clear_our_robots() {
+  our_robots_.Clear();
 }
-inline ::MovingObject* WorldModel::mutable_robots_yellow(int index) {
-  // @@protoc_insertion_point(field_mutable:WorldModel.robots_yellow)
-  return robots_yellow_.Mutable(index);
+inline ::MovingObject* WorldModel::mutable_our_robots(int index) {
+  // @@protoc_insertion_point(field_mutable:WorldModel.our_robots)
+  return our_robots_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::MovingObject >*
-WorldModel::mutable_robots_yellow() {
-  // @@protoc_insertion_point(field_mutable_list:WorldModel.robots_yellow)
-  return &robots_yellow_;
+WorldModel::mutable_our_robots() {
+  // @@protoc_insertion_point(field_mutable_list:WorldModel.our_robots)
+  return &our_robots_;
 }
-inline const ::MovingObject& WorldModel::robots_yellow(int index) const {
-  // @@protoc_insertion_point(field_get:WorldModel.robots_yellow)
-  return robots_yellow_.Get(index);
+inline const ::MovingObject& WorldModel::our_robots(int index) const {
+  // @@protoc_insertion_point(field_get:WorldModel.our_robots)
+  return our_robots_.Get(index);
 }
-inline ::MovingObject* WorldModel::add_robots_yellow() {
-  // @@protoc_insertion_point(field_add:WorldModel.robots_yellow)
-  return robots_yellow_.Add();
+inline ::MovingObject* WorldModel::add_our_robots() {
+  // @@protoc_insertion_point(field_add:WorldModel.our_robots)
+  return our_robots_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::MovingObject >&
-WorldModel::robots_yellow() const {
-  // @@protoc_insertion_point(field_list:WorldModel.robots_yellow)
-  return robots_yellow_;
+WorldModel::our_robots() const {
+  // @@protoc_insertion_point(field_list:WorldModel.our_robots)
+  return our_robots_;
 }
 
-// repeated .MovingObject robots_blue = 3;
-inline int WorldModel::robots_blue_size() const {
-  return robots_blue_.size();
+// repeated .MovingObject opp_robots = 3;
+inline int WorldModel::opp_robots_size() const {
+  return opp_robots_.size();
 }
-inline void WorldModel::clear_robots_blue() {
-  robots_blue_.Clear();
+inline void WorldModel::clear_opp_robots() {
+  opp_robots_.Clear();
 }
-inline ::MovingObject* WorldModel::mutable_robots_blue(int index) {
-  // @@protoc_insertion_point(field_mutable:WorldModel.robots_blue)
-  return robots_blue_.Mutable(index);
+inline ::MovingObject* WorldModel::mutable_opp_robots(int index) {
+  // @@protoc_insertion_point(field_mutable:WorldModel.opp_robots)
+  return opp_robots_.Mutable(index);
 }
 inline ::google::protobuf::RepeatedPtrField< ::MovingObject >*
-WorldModel::mutable_robots_blue() {
-  // @@protoc_insertion_point(field_mutable_list:WorldModel.robots_blue)
-  return &robots_blue_;
+WorldModel::mutable_opp_robots() {
+  // @@protoc_insertion_point(field_mutable_list:WorldModel.opp_robots)
+  return &opp_robots_;
 }
-inline const ::MovingObject& WorldModel::robots_blue(int index) const {
-  // @@protoc_insertion_point(field_get:WorldModel.robots_blue)
-  return robots_blue_.Get(index);
+inline const ::MovingObject& WorldModel::opp_robots(int index) const {
+  // @@protoc_insertion_point(field_get:WorldModel.opp_robots)
+  return opp_robots_.Get(index);
 }
-inline ::MovingObject* WorldModel::add_robots_blue() {
-  // @@protoc_insertion_point(field_add:WorldModel.robots_blue)
-  return robots_blue_.Add();
+inline ::MovingObject* WorldModel::add_opp_robots() {
+  // @@protoc_insertion_point(field_add:WorldModel.opp_robots)
+  return opp_robots_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::MovingObject >&
-WorldModel::robots_blue() const {
-  // @@protoc_insertion_point(field_list:WorldModel.robots_blue)
-  return robots_blue_;
+WorldModel::opp_robots() const {
+  // @@protoc_insertion_point(field_list:WorldModel.opp_robots)
+  return opp_robots_;
 }
 
 // bool blue = 4;

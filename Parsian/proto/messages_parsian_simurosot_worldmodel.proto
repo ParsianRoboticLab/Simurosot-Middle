@@ -42,8 +42,8 @@ enum GameState {
 
 message WorldModel {
 	MovingObject ball = 1;
-	repeated MovingObject robots_yellow = 2;
-	repeated MovingObject robots_blue = 3;
+	repeated MovingObject our_robots = 2;
+	repeated MovingObject opp_robots = 3;
 	bool blue = 4;
 	string mode = 6;
 	GameState gameState = 7;

@@ -13,7 +13,7 @@ message RRobot {
 }
 
 message Frame {
-	uint32 frame_number          = 1;
+	uint32 frame_number           = 1;
 	RBall ball                    = 2;
 	repeated RRobot robots_yellow = 3;
 	repeated RRobot robots_blue   = 4;
