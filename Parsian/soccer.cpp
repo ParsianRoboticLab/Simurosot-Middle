@@ -11,6 +11,8 @@ Soccer::Soccer() {
 	sprintf(log_c,"log-%d-%d-%d-%d-%d-%d.txt",1,2,3,4,5,6);
 	log = new std::ofstream(log_c);
 
+	// Initial Variables
+	ballInOurSide = true;
 }
 
 Soccer::~Soccer() {

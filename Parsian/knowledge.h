@@ -6,7 +6,9 @@
 #include "worldmodel.h"
 #include "field.h"
 
+
 double ballPossession(const CWorldModel* _wm); // 0 means fully for them and 1 means fully for us
+
 
 
 //// HELPER DEMO
@@ -26,5 +28,7 @@ void LeftWing(Environment* pEnv, int id);
 void RightWing(Environment* pEnv, int id);
 void CenterDefender(Environment* pEnv, int id);
 void CenterAttacker(Environment* pEnv, int id);
+
+
 
 #endif _KNOWLEDGE_HEADER

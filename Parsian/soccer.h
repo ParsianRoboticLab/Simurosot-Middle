@@ -52,6 +52,10 @@ private:
 	void oppFK();
 	void ourPK();
 	void oppPK();
-	
+
+
+	//// PlayOn
+	bool ballInOurSide;
+
 };
 
