@@ -368,3 +368,4 @@ ASALocalRun/
 
 
 .vscode/*
+logs/log*
