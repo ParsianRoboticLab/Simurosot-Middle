@@ -1,4 +1,17 @@
-### Intial Project 2018 Jun 24
+### Implement Basic Structure 2018 Jul 3 -- Mahi
+
+add geom2D
+add protobuf message
+add protobuf compiled library and extra files
+implement soccer architecture (plays)
+add and test log files
+add worldmodel and knowledge
+write batch file for auto copy and rename dll
+write simple udp socket
+
+
+
+### Intial Project 2018 Jun 24 -- Mahi
 
 add Project to Git
 server files added
