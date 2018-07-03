@@ -213,6 +213,23 @@ public:
       {
           return Vector2D( std::fabs( x ), std::fabs( y ) );
       }
+	/*!
+	\brief get x value
+	\return  x value
+	*/
+	double getX() const
+	{
+		return x;
+	}
+
+	/*!
+	\brief get  y value
+	\return  y value
+	*/
+	double getY() const
+	{
+		return y;
+	}
 
     /*!
       \brief get absolute x value
