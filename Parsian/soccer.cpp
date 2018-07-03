@@ -6,9 +6,11 @@ std::mutex mutex;
 Soccer::Soccer() {
 	env = NULL;
 	wm = new CWorldModel();
-
+	
+	SYSTEMTIME st;
+	GetLocalTime(&st);
 	char* log_c = new char[100];
-	sprintf(log_c,"log-%d-%d-%d-%d-%d-%d.txt",1,2,3,4,5,6);
+	sprintf(log_c,"parsian-simurosot/logs/log-%d-%d-%d-%d-%d-%d.txt",st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond);
 	log = new std::ofstream(log_c);
 
 	// Initial Variables

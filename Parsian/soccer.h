@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include "base.h"
+#include <windows.h>
 #include "worldmodel.h"
 #include "knowledge.h"
 
