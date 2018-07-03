@@ -10,6 +10,7 @@
 #include <windows.h>
 #include "worldmodel.h"
 #include "knowledge.h"
+#include "proto\messages_parsian_simurosot_data_wrapper.pb.h"
 
 class Soccer
 {
@@ -29,6 +30,15 @@ private:
 	CWorldModel* wm;
 	Environment* env;
 	Robot* robots;
+	// Network
+	DataWrapper* msg;
+	void fillmsg();
+	void sendmsg();
+	LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;
+	LARGE_INTEGER Frequency;
+	Logs* debugs;
+	Draws* draws;
+
 	// Threads!
 	std::thread* t_network; // For Read From Network
 	//static void f_network(const CWorldModel* wm, const Environment* env);

@@ -3,18 +3,87 @@
 
 std::mutex mutex;
 
+#define LOG(A) *log << A << std::endl 
+#define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
+m_marcomsg->set_level(LVL); \
+m_macromsg->set_file(__FILE__); \
+m_macromsg->set_line(__LINE__); \
+m_macromsg->set_function(__FUNCTION__);\
+}
+#define DRAW_V(V,C) {Vec2D* v_macro = draws->add_vectors();\
+v_macro->set_x(V.x()); \
+v_macro->set_y(V.y()); \
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
+#define DRAW_C(CI,SA,EA,R,F,CO) {Cir2D* c_macro = draws->add_circles();\
+Vec2D* v_marcro = c_macro->mutable_center();\
+v_macro->set_x(CI.center().x()); \
+v_macro->set_y(CI.center().y()); \
+c_macro->set_startAngle(SA); \
+c_macro->set_endAngle(EA); \
+c_macro->set_fill(F);\
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
+#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
+v_macro->set_x(V.x()); \
+v_macro->set_y(V.y()); \
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
+v_macro->set_x(V.x()); \
+v_macro->set_y(V.y()); \
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
+#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
+v_macro->set_x(V.x()); \
+v_macro->set_y(V.y()); \
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
 Soccer::Soccer() {
+
+
+	QueryPerformanceFrequency(&Frequency);
+	QueryPerformanceCounter(&StartingTime);
+
 	env = NULL;
+	msg = NULL;
 	wm = new CWorldModel();
-	
+
 	SYSTEMTIME st;
 	GetLocalTime(&st);
 	char* log_c = new char[100];
-	sprintf(log_c,"parsian-simurosot/logs/log-%d-%d-%d-%d-%d-%d.txt",st.wYear,st.wMonth,st.wDay,st.wHour,st.wMinute,st.wSecond);
+	sprintf(log_c, "parsian-simurosot/logs/log-%d-%d-%d-%d-%d-%d.txt", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
 	log = new std::ofstream(log_c);
 
 	// Initial Variables
 	ballInOurSide = true;
+
+	debugs = new Logs();
+	draws = new Draws();
 }
 
 Soccer::~Soccer() {
@@ -61,11 +130,15 @@ void Soccer::updateGS(const PlayMode& pm) {
 }
 
 void Soccer::updateWM(Environment* _env) {
+	if (msg != NULL) delete msg;
+	msg = NULL;
+	msg = new DataWrapper();
 	env = _env;
 	wm->update(_env);
+	fillmsg();
+	// SEND MSG
 	// TODO: update WM
 }
-#undef IFYELLOW(A,B)
 
 void Soccer::setFormerRobots(Robot* robots) {
 	switch (wm->gs) {
@@ -294,4 +367,98 @@ void Soccer::run(Robot* _robots) {
 		oppGK();
 		break;
 	}
+}
+
+void vec2D2vec2D(const rcsc::Vector2D& v1, Vector2D* v2) {
+	v2->set_x(v1.getX());
+	v2->set_y(v1.getY());
+}
+
+void Soccer::fillmsg() {
+	Header* header = msg->mutable_header();
+	header->set_seq(wm->getLoop());
+	QueryPerformanceCounter(&EndingTime);
+	ElapsedMicroseconds.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
+	ElapsedMicroseconds.QuadPart *= 1000000;
+	ElapsedMicroseconds.QuadPart /= Frequency.QuadPart;
+	header->set_stamp_second(ElapsedMicroseconds.QuadPart / 1000000);
+	header->set_stamp_nsecond(ElapsedMicroseconds.QuadPart % 1000000);
+
+	Frame* detection = msg->mutable_detection();
+	detection->set_frame_number(wm->getLoop());
+	RBall * rball = detection->mutable_ball();
+	rball->set_x(env->currentBall.pos.x);
+	rball->set_y(env->currentBall.pos.y);
+	for (int i = 0; i < ROBOT_COUNT; i++) {
+		RRobot* rb = detection->add_robots_blue();
+		RRobot* ry = detection->add_robots_yellow();
+#ifdef YELLOW
+		rb->set_id(i);
+		rb->set_x(  env -> opponent[i].pos.x);
+		rb->set_y(  env -> opponent[i].pos.y);
+		rb->set_ang(env -> opponent[i].rotation);
+		ry->set_id(i);
+		ry->set_x(  env -> home[i].pos.x);
+		ry->set_y(  env -> home[i].pos.y);
+		ry->set_ang(env -> home[i].rotation);
+#else
+		ry->set_id(i);
+		ry->set_x(env->opponent[i].pos.x);
+		ry->set_y(env->opponent[i].pos.y);
+		ry->set_ang(env->opponent[i].rotation);
+		rb->set_id(i);
+		rb->set_x(env->home[i].pos.x);
+		rb->set_y(env->home[i].pos.y);
+		rb->set_ang(env->home[i].rotation);
+#endif // YELLOW
+	}
+
+	msg->set_allocated_debugs(debugs);
+	msg->set_allocated_draws(draws);
+
+
+	WorldModel* twm = msg->mutable_worldmodel();
+	twm->set_blue(IFYELLOW(false, true));
+	twm->set_gamestate(static_cast<GameState>(wm->gs));
+
+	MovingObject* moball = twm->mutable_ball();
+	moball->set_id(0);
+	moball->set_direction(0);
+	moball->set_angulevelocity(0);
+	vec2D2vec2D(wm->getBall().pos, moball->mutable_pos());
+	vec2D2vec2D(wm->getBall().vel, moball->mutable_vel());
+	vec2D2vec2D(wm->getBall().acc, moball->mutable_acc());
+	for (int i = 0; i < ROBOT_COUNT; i++) {
+		MovingObject* ourR = twm->add_our_robots();
+		const CRobot& wor = wm->ourRobot(i);
+		ourR->set_id(wor.id);
+		ourR->set_angulevelocity(wor.w);
+		ourR->set_direction(wor.th);
+		vec2D2vec2D(wor.pos, ourR->mutable_pos());
+		vec2D2vec2D(wor.vel, ourR->mutable_vel());
+		vec2D2vec2D(wor.acc, ourR->mutable_acc());
+
+		MovingObject* oppR = twm->add_opp_robots();
+		const CRobot& wopr = wm->oppRobot(i);
+		oppR->set_id(wopr.id);
+		oppR->set_angulevelocity(wopr.w);
+		oppR->set_direction(wopr.th);
+		vec2D2vec2D(wopr.pos, oppR->mutable_pos());
+		vec2D2vec2D(wopr.vel, oppR->mutable_vel());
+		vec2D2vec2D(wopr.acc, oppR->mutable_acc());
+
+	}
+
+
+}
+
+void Soccer::sendmsg(){
+	//TODO: Send
+	debugs->clear_msgs();
+	draws->clear_vectors();
+	draws->clear_polygons();
+	draws->clear_segments();
+	draws->clear_texts();
+	draws->clear_rects();
+	draws->clear_circles();
 }
