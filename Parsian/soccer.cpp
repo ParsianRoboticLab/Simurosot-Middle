@@ -247,7 +247,8 @@ void Soccer::setBall(Vector3D* ball) {
 5) Support
 */
 
-void Soccer::run() {
+void Soccer::run(Robot* _robots) {
+	robots = _robots;
 	switch (wm->gs) {
 	case GameMode::PlayOn:
 		playon();

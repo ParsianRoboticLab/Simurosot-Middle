@@ -4,6 +4,7 @@
 #include "base.h"
 #include "geom.h"
 #include "worldmodel.h"
+#include "field.h"
 
 double ballPossession(const CWorldModel* _wm); // 0 means fully for them and 1 means fully for us
 

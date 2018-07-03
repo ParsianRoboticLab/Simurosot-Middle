@@ -22,12 +22,12 @@ public:
 	void setFormerRobots(Robot* robots);
 	void setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball);
 	void setBall(Vector3D* ball);
-	void run();
+	void run(Robot* _robots);
 private:
 	const char* teamName;
 	CWorldModel* wm;
 	Environment* env;
-
+	Robot* robots;
 	// Threads!
 	std::thread* t_network; // For Read From Network
 	//static void f_network(const CWorldModel* wm, const Environment* env);

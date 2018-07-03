@@ -156,6 +156,7 @@
     <ClInclude Include="base.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="field.h" />
+    <ClInclude Include="geom.h" />
     <ClInclude Include="geom\angle_deg.h" />
     <ClInclude Include="geom\circle_2d.h" />
     <ClInclude Include="geom\convex_hull.h" />
@@ -184,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="field.cpp" />
     <ClCompile Include="geom\angle_deg.cpp" />
     <ClCompile Include="geom\circle_2d.cpp" />
     <ClCompile Include="geom\convex_hull.cpp" />

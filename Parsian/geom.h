@@ -3,6 +3,7 @@
 #include "geom/convex_hull.h"
 #include "geom/line_2d.h"
 #include "geom/matrix_2d.h"
+#include "geom/rect_2d.h"
 #include "geom/polygon_2d.h"
 #include "geom/ray_2d.h"
 #include "geom/sector_2d.h"

@@ -55,5 +55,5 @@ PARSIAN_API void SetBall(PlayMode gameState, Vector3D * pBall) {
 PARSIAN_API void RunStrategy(Environment *pEnv) {
 	soccer.updateGS(PM_PlayOn);
 	soccer.updateWM(pEnv);
-	soccer.run();
+	soccer.run(pEnv->home);
 }

@@ -201,13 +201,14 @@ void Angle(Robot *robot, double desired_angle)
 	Velocity(robot, vl, vr);
 }
 
-void Position(Environment* pEnv, int id, double x, double y)
-{
+void Position(Environment* pEnv, int id, double x, double y) {
+
 	Position(&(pEnv->home[id]), x, y);
 }
 
-void Position(Robot *robot, double x, double y)
-{
+void Position(Robot *robot, double x, double y) {
+	x += Field::width / 2;
+	y += Field::height / 2;
 	double desired_angle = 0, theta_e = 0, d_angle = 0;
 	double vl = 0, vr = 0, vc = 100;
 

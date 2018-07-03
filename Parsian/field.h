@@ -8,22 +8,22 @@ class Field {
 public:
     Field();
     ~Field();
-    static const double height = 180;
-    static const double width = 220;
-    static const double goalDepth = 15;
-    static const double goalWidth = 40;
-    static const double penaltyAheight = 50;
-    static const double penaltyAwidth  = 15;
-    static const double penaltyBheight = 80;
-    static const double penaltyBwidth = 35;
-    static const double penaltyPoint = 37.5;
-    static const double penaltyCheight = 80;
-    static const double penaltyCwidth = 120;
-    static const double FBHeightOffSet = 30;
-    static const double FBHWidthOffSet = 55;
-    static const double markerFBOffSet = 25;
-    static const double centerCircleRadius = 25;
-    static const double cornerTriangleSide = 7;
+    static const double height;
+    static const double width;
+    static const double goalDepth;
+    static const double goalWidth;
+    static const double penaltyAheight;
+    static const double penaltyAwidth;
+    static const double penaltyBheight;
+	static const double penaltyBwidth;
+    static const double penaltyPoint;
+    static const double penaltyCheight;
+    static const double penaltyCwidth;
+    static const double FBHeightOffSet;
+    static const double FBHWidthOffSet;
+    static const double markerFBOffSet;
+    static const double centerCircleRadius;
+    static const double cornerTriangleSide;
 
     static rcsc::Vector2D FBLeftTop()  { return rcsc::Vector2D{-width/2 + FBHWidthOffSet, -height/2 + FBHeightOffSet};}
     static rcsc::Vector2D FBRightTop() { return rcsc::Vector2D{width/2 - FBHWidthOffSet, -height/2 + FBHeightOffSet};}
