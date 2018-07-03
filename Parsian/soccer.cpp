@@ -1,30 +1,70 @@
 #include "stdafx.h"
 #include "soccer.h"
 
+std::mutex mutex;
 
 Soccer::Soccer() {
-	m_handle = NULL;
-	
-}
+	env = NULL;
+	wm = new CWorldModel();
 
+	char* log_c = new char[100];
+	sprintf(log_c,"log-%d-%d-%d-%d-%d-%d.txt",1,2,3,4,5,6);
+	log = new std::ofstream(log_c);
+
+}
 
 Soccer::~Soccer() {
-	m_handle->join();
-	delete m_handle;
-	*logs << "\n THE END. \n";
-	logs->close();
+	log->close();
+	delete log;
+	delete wm;
 }
 
-void Soccer::init(const char* _teamName) {
+void Soccer::init(const char* _teamName, bool isYellow) {
 	teamName = _teamName;
+	wm->teamColor = (isYellow) ? TColor::Yellow : TColor::Blue;
 }
 
-void Soccer::updateWM(const CWorldModel & _wm) {
-	wm = _wm;
+#define IFYELLOW(A,B) ((wm->teamColor == TColor::Yellow) ? (A) : (B))
+void Soccer::updateGS(const PlayMode& pm) {
+	switch (pm) {
+	case PM_PlayOn:
+		wm->gs = GameState::PlayOn; break;
+	case PM_FreeBall_LeftTop:
+		wm->gs = GameState::FreeBall_LeftTop; break;
+	case PM_FreeBall_LeftBot:
+		wm->gs = GameState::FreeBall_LeftBot; break;
+	case PM_FreeBall_RightTop:
+		wm->gs = GameState::FreeBall_RightTop; break;
+	case PM_FreeBall_RightBot:
+		wm->gs = GameState::FreeBall_RightBot; break;
+	case PM_PlaceKick_Yellow:
+		wm->gs = IFYELLOW(GameState::OurKickOff, GameState::OppKickOff); break;
+	case PM_PlaceKick_Blue:
+		wm->gs = IFYELLOW(GameState::OppKickOff, GameState::OurKickOff); break;
+	case PM_PenaltyKick_Yellow:
+		wm->gs = IFYELLOW(GameState::OurPenaltyKick, GameState::OppPenaltyKick); break;
+	case PM_PenaltyKick_Blue:
+		wm->gs = IFYELLOW(GameState::OppPenaltyKick, GameState::OurPenaltyKick); break;
+	case PM_FreeKick_Yellow:
+		wm->gs = IFYELLOW(GameState::OurFreeKick, GameState::OppFreeKick); break;
+	case PM_FreeKick_Blue:
+		wm->gs = IFYELLOW(GameState::OppFreeKick, GameState::OurFreeKick); break;
+	case PM_GoalKick_Yellow:
+		wm->gs = IFYELLOW(GameState::OurGoalKick, GameState::OppGoalKick); break;
+	case PM_GoalKick_Blue:
+		wm->gs = IFYELLOW(GameState::OppGoalKick, GameState::OurGoalKick); break;
+	}
 }
+
+void Soccer::updateWM(Environment* _env) {
+	env = _env;
+	wm->update(_env);
+	// TODO: update WM
+}
+#undef IFYELLOW(A,B)
 
 void Soccer::setFormerRobots(Robot* robots) {
-	switch (wm.gs) {
+	switch (wm->gs) {
 	case GameState::FreeBall_LeftTop:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 80;
@@ -107,8 +147,8 @@ void Soccer::setFormerRobots(Robot* robots) {
 	}
 }
 
-void Soccer::setLaterRobots(Robot* robots) {
-	switch (wm.gs) {
+void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball) {
+	switch (wm->gs) {
 	case GameState::FreeBall_RightTop:
 		robots[0].pos.x = 5;
 		robots[0].pos.y = 80;
@@ -187,6 +227,66 @@ void Soccer::setLaterRobots(Robot* robots) {
 		break;
 
 	default: /* For Case That We Put Our Robots First */
+		break;
+	}
+}
+
+void Soccer::setBall(Vector3D* ball) {
+	if (wm->gs == GameState::OurGoalKick) {
+		ball->x = 10;
+		ball->y = 70;
+	}
+}
+
+/**
+0) Goalie
+1) Defense
+2) Marks
+3) Posiition
+4) PlayMake
+5) Support
+*/
+
+void Soccer::run() {
+	switch (wm->gs) {
+	case GameState::PlayOn:
+		playon();
+		break;
+	case GameState::FreeBall_LeftTop:
+		freeballLT();
+		break;
+	case GameState::FreeBall_LeftBot:
+		freeballLB();
+		break;
+	case GameState::FreeBall_RightTop:
+		freeballRT();
+		break;
+	case GameState::FreeBall_RightBot:
+		freeballRB();
+		break;
+	case GameState::OurKickOff:
+		ourKO();
+		break;
+	case GameState::OppKickOff:
+		oppKO();
+		break;
+	case GameState::OurPenaltyKick:
+		ourPK();
+		break;
+	case GameState::OppPenaltyKick:
+		oppPK();
+		break;
+	case GameState::OurFreeKick:
+		ourFK();
+		break;
+	case GameState::OppFreeKick:
+		oppFK();
+		break;
+	case GameState::OurGoalKick:
+		ourGK();
+		break;
+	case GameState::OppGoalKick:
+		oppGK();
 		break;
 	}
 }

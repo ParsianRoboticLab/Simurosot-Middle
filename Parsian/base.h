@@ -1,3 +1,5 @@
+#define YELLOW
+
 const long ROBOT_COUNT = 5;
 const double PI = 3.1415926535;
 
@@ -60,24 +62,3 @@ enum PlayMode {
 	PM_GoalKick_Yellow,      //   11
 	PM_GoalKick_Blue         //   12
 };
-
-enum class GameState {
-	PlayOn            = 0,
-	FreeBall_LeftTop  = 1,
-	FreeBall_LeftBot  = 2,
-	FreeBall_RightTop = 3,
-	FreeBall_RightBot = 4,
-	OurKickOff        = 5,
-	OppKickOff        = 6,
-	OurPenaltyKick    = 7,
-	OppPenaltyKick    = 8,
-	OurFreeKick       = 9,
-	OppFreeKick       = 10,
-	OurGoalKick       = 11,
-	OppGoalKick       = 12
-};
-
-enum class TColor {
-	Yellow = 0,
-	Blue   = 1
-}
