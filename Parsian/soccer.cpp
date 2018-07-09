@@ -34,34 +34,6 @@ c_macro->set_g(C.g()); \
 c_macro->set_a(C.a()); \
 }
 
-#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
-v_macro->set_x(V.x()); \
-v_macro->set_y(V.y()); \
-Color* c_macro = v_macro->mutable_color(); \
-c_macro->set_r(C.r()); \
-c_macro->set_b(C.b()); \
-c_macro->set_g(C.g()); \
-c_macro->set_a(C.a()); \
-}
-#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
-v_macro->set_x(V.x()); \
-v_macro->set_y(V.y()); \
-Color* c_macro = v_macro->mutable_color(); \
-c_macro->set_r(C.r()); \
-c_macro->set_b(C.b()); \
-c_macro->set_g(C.g()); \
-c_macro->set_a(C.a()); \
-}
-
-#define DRAW_V(V,C) {Vec2D* v_marcro = draws->add_vectors();\
-v_macro->set_x(V.x()); \
-v_macro->set_y(V.y()); \
-Color* c_macro = v_macro->mutable_color(); \
-c_macro->set_r(C.r()); \
-c_macro->set_b(C.b()); \
-c_macro->set_g(C.g()); \
-c_macro->set_a(C.a()); \
-}
 
 Soccer::Soccer() {
 
