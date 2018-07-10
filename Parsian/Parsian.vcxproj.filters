@@ -28,6 +28,15 @@
     <Filter Include="Source Files\plays">
       <UniqueIdentifier>{762f0782-81b8-4217-9de0-7eaca5100b3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\plans">
+      <UniqueIdentifier>{4f55ebe0-9dab-43fb-8e52-d6463500e134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\skills">
+      <UniqueIdentifier>{46e07058-bf0f-4665-98d4-9bb74d7a67f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\roles">
+      <UniqueIdentifier>{eb9b726c-7b66-4bd0-a405-87f40911c4b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -229,6 +238,15 @@
     </ClCompile>
     <ClCompile Include="field.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plans\defenseplan.cpp">
+      <Filter>Source Files\plans</Filter>
+    </ClCompile>
+    <ClCompile Include="skills\gotopoint.cpp">
+      <Filter>Source Files\skills</Filter>
+    </ClCompile>
+    <ClCompile Include="roles\goalie.cpp">
+      <Filter>Source Files\roles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@ public:
     static const double markerFBOffSet;
     static const double centerCircleRadius;
     static const double cornerTriangleSide;
+	static const double pushingWidth;
 
     static rcsc::Vector2D FBLeftTop()  { return rcsc::Vector2D{-width/2 + FBHWidthOffSet, -height/2 + FBHeightOffSet};}
     static rcsc::Vector2D FBRightTop() { return rcsc::Vector2D{width/2 - FBHWidthOffSet, -height/2 + FBHeightOffSet};}
@@ -55,10 +56,11 @@ public:
     static rcsc::Rect2D oppPenaltyBRect() { return rcsc::Rect2D{width/2 - penaltyBwidth, -penaltyBheight/2, penaltyBwidth, penaltyBheight};}
     static rcsc::Rect2D oppPenaltyCRect() { return rcsc::Rect2D{width/2 - penaltyCwidth, -penaltyCheight/2, penaltyCwidth, penaltyCheight};}
 
-    static rcsc::Rect2D fieldRect()   { return rcsc::Rect2D{-width/2, -height/2, width, height};}
-    static rcsc::Rect2D ourHalfRect() { return rcsc::Rect2D{-width/2, -height/2, width/2, height};}
-    static rcsc::Rect2D oppHalfRect() { return rcsc::Rect2D{0, -height/2, width/2, height};}
-
+    static rcsc::Rect2D fieldRect()     { return rcsc::Rect2D{-width/2, -height/2, width, height};}
+	static rcsc::Rect2D SafeFieldRect() { return rcsc::Rect2D{ -width / 2 + 10, -height / 2 + 10, width - 10, height - 10}; }
+    static rcsc::Rect2D ourHalfRect()   { return rcsc::Rect2D{-width/2, -height/2, width/2, height};}
+    static rcsc::Rect2D oppHalfRect()   { return rcsc::Rect2D{0, -height/2, width/2, height};}
+	static bool isInPushingArea(const rcsc::Vector2D& v) { return !SafeFieldRect().contains(v); }
 };
 
 #endif // _FIELD_HEADER

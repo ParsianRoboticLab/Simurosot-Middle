@@ -12,6 +12,39 @@
 #include "knowledge.h"
 #include "proto\messages_parsian_simurosot_data_wrapper.pb.h"
 #include "server.h"
+
+#define LOG(A) *log << A << std::endl 
+#define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
+m_marcomsg->set_level(LVL); \
+m_macromsg->set_file(__FILE__); \
+m_macromsg->set_line(__LINE__); \
+m_macromsg->set_function(__FUNCTION__);\
+}
+#define DRAW_V(V,C) {Vec2D* v_macro = draws->add_vectors();\
+v_macro->set_x(V.x()); \
+v_macro->set_y(V.y()); \
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
+#define DRAW_C(CI,SA,EA,R,F,CO) {Cir2D* c_macro = draws->add_circles();\
+Vec2D* v_marcro = c_macro->mutable_center();\
+v_macro->set_x(CI.center().x()); \
+v_macro->set_y(CI.center().y()); \
+c_macro->set_startAngle(SA); \
+c_macro->set_endAngle(EA); \
+c_macro->set_fill(F);\
+Color* c_macro = v_macro->mutable_color(); \
+c_macro->set_r(C.r()); \
+c_macro->set_b(C.b()); \
+c_macro->set_g(C.g()); \
+c_macro->set_a(C.a()); \
+}
+
+
 class Soccer
 {
 public:
@@ -72,6 +105,10 @@ private:
 
 	//// PlayOn
 	bool ballInOurSide;
+
+	void Defense(Robot * robots, int size);
+
+	void Goalie(Robot * gk);
 
 };
 

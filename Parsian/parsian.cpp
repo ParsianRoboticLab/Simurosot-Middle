@@ -53,7 +53,6 @@ PARSIAN_API void SetBall(PlayMode gameState, Vector3D * pBall) {
 // Strategy for your team using centimeter unit, cartesian coordinate system.
 // The origin is at the left bottom of the field.
 PARSIAN_API void RunStrategy(Environment *pEnv) {
-	soccer.updateGS(PM_PlayOn);
 	soccer.updateWM(pEnv);
 	soccer.run(pEnv->home);
 }

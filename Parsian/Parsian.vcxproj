@@ -201,6 +201,7 @@
     <ClCompile Include="knowledge.cpp" />
     <ClCompile Include="net\src\msock.cpp" />
     <ClCompile Include="parsian.cpp" />
+    <ClCompile Include="plans\defenseplan.cpp" />
     <ClCompile Include="plays\freeball_lb.cpp" />
     <ClCompile Include="plays\freeball_lt.cpp" />
     <ClCompile Include="plays\freeball_rb.cpp" />
@@ -218,6 +219,8 @@
     <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc" />
+    <ClCompile Include="roles\goalie.cpp" />
+    <ClCompile Include="skills\gotopoint.cpp" />
     <ClCompile Include="soccer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

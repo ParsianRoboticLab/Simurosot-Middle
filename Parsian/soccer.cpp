@@ -3,36 +3,6 @@
 
 std::mutex mutex;
 
-#define LOG(A) *log << A << std::endl 
-#define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
-m_marcomsg->set_level(LVL); \
-m_macromsg->set_file(__FILE__); \
-m_macromsg->set_line(__LINE__); \
-m_macromsg->set_function(__FUNCTION__);\
-}
-#define DRAW_V(V,C) {Vec2D* v_macro = draws->add_vectors();\
-v_macro->set_x(V.x()); \
-v_macro->set_y(V.y()); \
-Color* c_macro = v_macro->mutable_color(); \
-c_macro->set_r(C.r()); \
-c_macro->set_b(C.b()); \
-c_macro->set_g(C.g()); \
-c_macro->set_a(C.a()); \
-}
-
-#define DRAW_C(CI,SA,EA,R,F,CO) {Cir2D* c_macro = draws->add_circles();\
-Vec2D* v_marcro = c_macro->mutable_center();\
-v_macro->set_x(CI.center().x()); \
-v_macro->set_y(CI.center().y()); \
-c_macro->set_startAngle(SA); \
-c_macro->set_endAngle(EA); \
-c_macro->set_fill(F);\
-Color* c_macro = v_macro->mutable_color(); \
-c_macro->set_r(C.r()); \
-c_macro->set_b(C.b()); \
-c_macro->set_g(C.g()); \
-c_macro->set_a(C.a()); \
-}
 
 
 Soccer::Soccer() {
@@ -124,85 +94,69 @@ void Soccer::setFormerRobots(Robot* robots) {
 	LOG("FORMER");
 	switch (wm->gs) {
 	case GameMode::FreeBall_LeftTop:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 80;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 25;
-		robots[1].pos.y = 30;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 22;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 60;
-		robots[3].pos.y = 100;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 80;
-		robots[4].pos.y = 130;
-		robots[4].rotation = 0;
+		// Goalie -> Center Of Goal
+		robots[0].pos.x = 5; robots[0].pos.y = 90 + Field::penaltyAheight / 2; robots[0].rotation = 90;
+		// Behind Ball
+		robots[1].pos.x = Field::FBHWidthOffSet - Field::markerFBOffSet;  robots[1].pos.y = 180 - Field::FBHeightOffSet;  robots[1].rotation = 0;
+		// Others
+		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = 80; robots[2].rotation = 90;
+		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = 80; robots[3].rotation = 0;
+		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH + 20;  robots[4].pos.y = 80; robots[4].rotation = 90;
+
 		break;
 	case GameMode::FreeBall_LeftBot:
-		break;
-
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 40;
-		robots[1].pos.y = 90;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 100;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 95;
-		robots[3].pos.y = 80;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 125;
-		robots[4].pos.y = 90;
-		robots[4].rotation = 0;
+		// Goalie -> Center Of Goal
+		robots[0].pos.x = 5; robots[0].pos.y = 90 - Field::penaltyAheight/2; robots[0].rotation = 90;
+		// Behind Ball
+		robots[1].pos.x = Field::FBHWidthOffSet - Field::markerFBOffSet;  robots[1].pos.y = Field::FBHeightOffSet;  robots[1].rotation = 0;
+		// Others
+		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = 100; robots[2].rotation = 90;
+		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = 100; robots[3].rotation = 0;
+		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH + 20;  robots[4].pos.y = 100; robots[4].rotation = 90;
 		break;
 	case GameMode::OurKickOff:
 		break;
 	case GameMode::OppPenaltyKick:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 130;
-		robots[1].pos.y = 130;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 130;
-		robots[2].pos.y = 120;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 130;
-		robots[3].pos.y = 80;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 130;
-		robots[4].pos.y = 50;
-		robots[4].rotation = 0;
-		break;
+		// Goalie -> Center Of Goal
+		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 90;
+		// Others
+		robots[1].pos.x = 130;  robots[1].pos.y = 80;  robots[1].rotation = 0;
+		robots[2].pos.x = 130;  robots[2].pos.y = 100; robots[2].rotation = 0;
+		robots[3].pos.x = 130;  robots[3].pos.y = 60;  robots[3].rotation = 0;
+		robots[4].pos.x = 130;  robots[4].pos.y = 120; robots[4].rotation = 0;
 
 		break;
 	case GameMode::OppFreeKick:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 30;
-		robots[1].pos.y = 100;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 50;
-		robots[2].pos.y = 65;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 70;
-		robots[3].pos.y = 40;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 90;
-		robots[4].pos.y = 130;
-		robots[4].rotation = 0;
+		// Goalie -> Center Of Goal
+		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 90;
+		// Others
+		robots[1].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[1].pos.y = Field::height/2 + Field::penaltyAheight/2 - ROBOT_HALF_WIDTH;  robots[1].rotation = 90;
+		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = Field::height/2 + -Field::penaltyAheight/2 + ROBOT_HALF_WIDTH; robots[2].rotation = 90;
+		robots[3].pos.x = Field::penaltyBwidth - ROBOT_HALF_WIDTH;  robots[3].pos.y = Field::height/2 + Field::penaltyBheight/2 + ROBOT_HALF_WIDTH;  robots[3].rotation = 0;
+		robots[4].pos.x = Field::penaltyBwidth - ROBOT_HALF_WIDTH;  robots[4].pos.y = Field::height/2 + -Field::penaltyBheight/2 - ROBOT_HALF_WIDTH; robots[4].rotation = 0;
+
 		break;
 	case GameMode::OurGoalKick:
+		// Goalie -> Center Of Goal
+		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 0;
+		// Others
+		robots[1].pos.x = 5;  robots[1].pos.y = Field::height / 2 + Field::penaltyAheight / 2 + ROBOT_HALF_WIDTH;  robots[1].rotation = 0;
+		robots[2].pos.x = 5;  robots[2].pos.y = Field::height / 2 + -Field::penaltyAheight / 2 - ROBOT_HALF_WIDTH; robots[2].rotation = 0;
+		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = Field::height / 2 + Field::penaltyBheight / 2 - ROBOT_HALF_WIDTH;  robots[3].rotation = 0;
+		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[4].pos.y = Field::height / 2 + -Field::penaltyBheight / 2 + ROBOT_HALF_WIDTH; robots[4].rotation = 0;
+
 		break;
 
 	default: /* For Case That We Don't Put Our Robots First */
 		break;
 	}
+#ifndef YELLOW
+	for (int i = 0; i < ROBOT_COUNT; i++) {
+		robots[i].x = 220 - robots[i].x;
+		robots[i].y = 180 - robots[i].y;
+	}
+#endif // !YELLOW
+
 	LOG("FORMER END");
 }
 

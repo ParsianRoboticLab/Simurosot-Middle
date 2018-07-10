@@ -5,7 +5,8 @@
 
 const long ROBOT_COUNT = 5;
 const double PI = 3.1415926535;
-
+const double ROBOT_HALF_WIDTH = 3.75;
+const double ROBOT_WIDTH = 7.5;
 typedef struct
 {
 	double x, y, z;
