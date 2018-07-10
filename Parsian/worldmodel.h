@@ -50,9 +50,11 @@ public:
 	void update(const Environment* _env);
 
 private:
-    CMovingObject ball;
+    CMovingObject ball, lastBall;
     CRobot our[ROBOT_COUNT];
     CRobot opp[ROBOT_COUNT];
+	CRobot lastOur[ROBOT_COUNT];
+	CRobot lastOpp[ROBOT_COUNT];
     unsigned long long loop;
 
 	/// Tracker and Filters

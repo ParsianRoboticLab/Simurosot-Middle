@@ -14,9 +14,9 @@ void Soccer::playon() {
 	else {
 
 	}
-	Position(&robots[1], 0, 0);
-	Position(&robots[2], 10, 10);
-	Position(&robots[3], 20, 20);
-	Position(&robots[4], 30, 30);
+	Position(&robots[2], 70, 20);
+	Position(&robots[1], -50, -50);
+	Position(&robots[3], -50, -50);
+	Position(&robots[4], -50, -50);
 
 }

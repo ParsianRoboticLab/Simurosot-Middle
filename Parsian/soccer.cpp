@@ -56,7 +56,7 @@ Soccer::Soccer() {
 
 	debugs = new Logs();
 	draws = new Draws();
-	DetectionServer = new Server("192.168.43.105", 10020);
+	DetectionServer = new Server("172.21.232.219", 10040);
 	PlotServer = new Server("192.168.43.105", 10030);
 	LOG("START");
 }
@@ -361,7 +361,8 @@ void vec2D2vec2D(const rcsc::Vector2D& v1, Vector2D* v2) {
 	v2->set_x(v1.getX());
 	v2->set_y(v1.getY());
 }
-
+double lastX = 0;
+double vx = 0;
 void Soccer::fillmsg() {
 	msg->Clear();
 	header = msg->mutable_header();
@@ -378,7 +379,7 @@ void Soccer::fillmsg() {
 	RBall * rball = detection->mutable_ball();
 	rball->set_x(env->currentBall.pos.x);
 	rball->set_y(env->currentBall.pos.y);
-	
+	rball->set_x(std::sqrtf(rball->x()*rball->x() + rball->y()*rball->y()));
 	for (int i = 0; i < ROBOT_COUNT; i++) {
 		RRobot* rb = detection->add_robots_blue();
 		RRobot* ry = detection->add_robots_yellow();
@@ -388,7 +389,7 @@ void Soccer::fillmsg() {
 		rb->set_y(  env -> opponent[i].pos.y);
 		rb->set_ang(env -> opponent[i].rotation);
 		ry->set_id(i);
-		ry->set_x(  env -> home[i].pos.x);
+		ry->set_x(env->home[i].pos.x);
 		ry->set_y(  env -> home[i].pos.y);
 		ry->set_ang(env -> home[i].rotation);
 		LOG("RB: " << i << "X: " << env->opponent[i].pos.x);
@@ -411,7 +412,7 @@ void Soccer::fillmsg() {
 	twm = msg->mutable_worldmodel();
 	twm->set_blue(IFYELLOW(false, true));
 	twm->set_gamestate(static_cast<GameState>(wm->gs));
-
+	twm->set_mode("mahimode");
 	MovingObject* moball = twm->mutable_ball();
 	moball->set_id(0);
 	moball->set_direction(0);
@@ -445,21 +446,20 @@ void Soccer::fillmsg() {
 
 void Soccer::sendmsg(){
 	std::string str;
-	if (detection->SerializeToString(&str)) {
-		LOG("STRSIZE: " << str.size());
-		DetectionServer->send(str.c_str());
+	str.resize(twm->ByteSize());
+	if (twm->SerializePartialToString(&str)) {
+		LOG("STRSIZE: " << str.size() << strlen(str.c_str()));
+		DetectionServer->send(str.c_str(), str.size());
 	}
 	else {
-		DetectionServer->send("SERIAL FAILED");
 
 	}
 
 	if (msg->SerializeToString(&str)) {
 		LOG("STRSIZE: " << str.size());
-		PlotServer->send(str.c_str());
+		PlotServer->send(str.c_str(), str.size());
 	}
 	else {
-		PlotServer->send("SERIAL FAILED");
 
 	}
 

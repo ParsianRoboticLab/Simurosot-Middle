@@ -48,12 +48,12 @@ public:
 
 	}
 
-	bool send(const char* message) {
+	bool send(const char* message, int size) {
 		char ch = 0;
 		int nbytes = sendto(
 			fd,
 			message,
-			strlen(message),
+			size,
 			0,
 			(struct sockaddr*) &addr,
 			sizeof(addr)
