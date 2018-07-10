@@ -11,7 +11,7 @@
 #include "worldmodel.h"
 #include "knowledge.h"
 #include "proto\messages_parsian_simurosot_data_wrapper.pb.h"
-
+#include "server.h"
 class Soccer
 {
 public:
@@ -31,7 +31,12 @@ private:
 	Environment* env;
 	Robot* robots;
 	// Network
+	Server* DetectionServer;
+	Server* PlotServer;
 	DataWrapper* msg;
+	Header* header;
+	Frame* detection;
+	WorldModel* twm;
 	void fillmsg();
 	void sendmsg();
 	LARGE_INTEGER StartingTime, EndingTime, ElapsedMicroseconds;

@@ -42,7 +42,7 @@ Soccer::Soccer() {
 	QueryPerformanceCounter(&StartingTime);
 
 	env = NULL;
-	msg = NULL;
+	msg = new DataWrapper();
 	wm = new CWorldModel();
 
 	SYSTEMTIME st;
@@ -56,21 +56,28 @@ Soccer::Soccer() {
 
 	debugs = new Logs();
 	draws = new Draws();
+	DetectionServer = new Server("192.168.43.105", 10020);
+	PlotServer = new Server("192.168.43.105", 10030);
+	LOG("START");
 }
 
 Soccer::~Soccer() {
+	LOG("THE END");
 	log->close();
 	delete log;
 	delete wm;
+	delete DetectionServer;
 }
 
 void Soccer::init(const char* _teamName, bool isYellow) {
 	teamName = _teamName;
 	wm->teamColor = (isYellow) ? TColor::Yellow : TColor::Blue;
+	LOG("INIT");
 }
 
 #define IFYELLOW(A,B) ((wm->teamColor == TColor::Yellow) ? (A) : (B))
 void Soccer::updateGS(const PlayMode& pm) {
+	LOG("UPDATEGS: " << pm);
 	switch (pm) {
 	case PM_PlayOn:
 		wm->gs = GameMode::PlayOn; break;
@@ -102,17 +109,19 @@ void Soccer::updateGS(const PlayMode& pm) {
 }
 
 void Soccer::updateWM(Environment* _env) {
-	if (msg != NULL) delete msg;
-	msg = NULL;
-	msg = new DataWrapper();
+	LOG("UPDATE WM");
 	env = _env;
+	LOG("ENV COPIED");
 	wm->update(_env);
+	LOG("WM UPDATED");
 	fillmsg();
-	// SEND MSG
-	// TODO: update WM
+	LOG("MSG FILLED");
+	sendmsg();
+	LOG("MSG SENT");
 }
 
 void Soccer::setFormerRobots(Robot* robots) {
+	LOG("FORMER");
 	switch (wm->gs) {
 	case GameMode::FreeBall_LeftTop:
 		robots[0].pos.x = 5;
@@ -194,9 +203,11 @@ void Soccer::setFormerRobots(Robot* robots) {
 	default: /* For Case That We Don't Put Our Robots First */
 		break;
 	}
+	LOG("FORMER END");
 }
 
 void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball) {
+	LOG("LATER");
 	switch (wm->gs) {
 	case GameMode::FreeBall_RightTop:
 		robots[0].pos.x = 5;
@@ -278,13 +289,16 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 	default: /* For Case That We Put Our Robots First */
 		break;
 	}
+	LOG("LATER END");
 }
 
 void Soccer::setBall(Vector3D* ball) {
+	LOG("SET BALL");
 	if (wm->gs == GameMode::OurGoalKick) {
 		ball->x = 10;
 		ball->y = 70;
 	}
+	LOG("SET BALL END");
 }
 
 /**
@@ -297,6 +311,7 @@ void Soccer::setBall(Vector3D* ball) {
 */
 
 void Soccer::run(Robot* _robots) {
+	LOG("RUN");
 	robots = _robots;
 	switch (wm->gs) {
 	case GameMode::PlayOn:
@@ -339,6 +354,7 @@ void Soccer::run(Robot* _robots) {
 		oppGK();
 		break;
 	}
+	LOG("END RUN");
 }
 
 void vec2D2vec2D(const rcsc::Vector2D& v1, Vector2D* v2) {
@@ -347,7 +363,8 @@ void vec2D2vec2D(const rcsc::Vector2D& v1, Vector2D* v2) {
 }
 
 void Soccer::fillmsg() {
-	Header* header = msg->mutable_header();
+	msg->Clear();
+	header = msg->mutable_header();
 	header->set_seq(wm->getLoop());
 	QueryPerformanceCounter(&EndingTime);
 	ElapsedMicroseconds.QuadPart = EndingTime.QuadPart - StartingTime.QuadPart;
@@ -356,11 +373,12 @@ void Soccer::fillmsg() {
 	header->set_stamp_second(ElapsedMicroseconds.QuadPart / 1000000);
 	header->set_stamp_nsecond(ElapsedMicroseconds.QuadPart % 1000000);
 
-	Frame* detection = msg->mutable_detection();
+	detection = msg->mutable_detection();
 	detection->set_frame_number(wm->getLoop());
 	RBall * rball = detection->mutable_ball();
 	rball->set_x(env->currentBall.pos.x);
 	rball->set_y(env->currentBall.pos.y);
+	
 	for (int i = 0; i < ROBOT_COUNT; i++) {
 		RRobot* rb = detection->add_robots_blue();
 		RRobot* ry = detection->add_robots_yellow();
@@ -373,6 +391,7 @@ void Soccer::fillmsg() {
 		ry->set_x(  env -> home[i].pos.x);
 		ry->set_y(  env -> home[i].pos.y);
 		ry->set_ang(env -> home[i].rotation);
+		LOG("RB: " << i << "X: " << env->opponent[i].pos.x);
 #else
 		ry->set_id(i);
 		ry->set_x(env->opponent[i].pos.x);
@@ -385,11 +404,11 @@ void Soccer::fillmsg() {
 #endif // YELLOW
 	}
 
-	msg->set_allocated_debugs(debugs);
-	msg->set_allocated_draws(draws);
+	//msg->set_allocated_debugs(debugs);
+	//msg->set_allocated_draws(draws);
 
 
-	WorldModel* twm = msg->mutable_worldmodel();
+	twm = msg->mutable_worldmodel();
 	twm->set_blue(IFYELLOW(false, true));
 	twm->set_gamestate(static_cast<GameState>(wm->gs));
 
@@ -425,7 +444,26 @@ void Soccer::fillmsg() {
 }
 
 void Soccer::sendmsg(){
-	//TODO: Send
+	std::string str;
+	if (detection->SerializeToString(&str)) {
+		LOG("STRSIZE: " << str.size());
+		DetectionServer->send(str.c_str());
+	}
+	else {
+		DetectionServer->send("SERIAL FAILED");
+
+	}
+
+	if (msg->SerializeToString(&str)) {
+		LOG("STRSIZE: " << str.size());
+		PlotServer->send(str.c_str());
+	}
+	else {
+		PlotServer->send("SERIAL FAILED");
+
+	}
+
+	
 	debugs->clear_msgs();
 	draws->clear_vectors();
 	draws->clear_polygons();
