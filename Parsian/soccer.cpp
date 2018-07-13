@@ -23,7 +23,8 @@ Soccer::Soccer() {
 
 	// Initial Variables
 	ballInOurSide = true;
-
+	playonCounter = 0;
+	playonFlag = false;
 	debugs = new Logs();
 	draws = new Draws();
 	DetectionServer = new Server("172.21.232.219", 10040);
@@ -91,6 +92,8 @@ void Soccer::updateWM(Environment* _env) {
 }
 
 void Soccer::setFormerRobots(Robot* robots) {
+	playonFlag = false;
+	playonCounter = 0;
 	LOG("FORMER");
 	switch (wm->gs) {
 	case GameMode::FreeBall_LeftTop:
@@ -161,6 +164,8 @@ void Soccer::setFormerRobots(Robot* robots) {
 }
 
 void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball) {
+	playonFlag = false;
+	playonCounter = 0;
 	LOG("LATER");
 	switch (wm->gs) {
 	case GameMode::FreeBall_RightTop:
@@ -267,6 +272,8 @@ void Soccer::setBall(Vector3D* ball) {
 void Soccer::run(Robot* _robots) {
 	LOG("RUN");
 	robots = _robots;
+	if (playonCounter > 20 || playonFlag == true) updateGS(PM_PlayOn);
+	playonCounter++;
 	switch (wm->gs) {
 	case GameMode::PlayOn:
 		playon();

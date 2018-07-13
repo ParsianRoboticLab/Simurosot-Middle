@@ -105,7 +105,8 @@ private:
 
 	//// PlayOn
 	bool ballInOurSide;
-
+	int playonCounter;
+	bool playonFlag;
 	void Defense(Robot * robots, int size);
 
 	void Goalie(Robot * gk);
