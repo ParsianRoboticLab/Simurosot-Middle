@@ -30,6 +30,11 @@ Soccer::Soccer() {
 	DetectionServer = new Server("172.21.224.73", 10040);
 	PlotServer = new Server("192.168.43.105", 10030);
 	LOG("START");
+
+	// SKILLS
+	posPID = new PID[ROBOT_COUNT];
+	angPID = new PID[ROBOT_COUNT];
+
 }
 
 Soccer::~Soccer() {
