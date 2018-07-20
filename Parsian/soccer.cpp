@@ -27,7 +27,7 @@ Soccer::Soccer() {
 	playonFlag = false;
 	debugs = new Logs();
 	draws = new Draws();
-	DetectionServer = new Server("172.21.224.73", 10040);
+	DetectionServer = new Server("172.21.224.30", 10040);
 	PlotServer = new Server("192.168.43.105", 10030);
 	LOG("START");
 
@@ -437,4 +437,8 @@ void Soccer::sendmsg(){
 	draws->clear_texts();
 	draws->clear_rects();
 	draws->clear_circles();
+}
+
+void Soccer::setRobotVel(int id, double vel_tan, double w) {
+	getRobotWheelPID(wm->ourRobot(id), w, vel_tan, robots[id].velocityRight, robots[id].velocityLeft);
 }
