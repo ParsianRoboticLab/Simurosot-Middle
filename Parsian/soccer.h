@@ -12,6 +12,8 @@
 #include "knowledge.h"
 #include "proto\messages_parsian_simurosot_data_wrapper.pb.h"
 #include "server.h"
+#include "util/bangbang.h"
+#include "util/pid.h"
 
 #define LOG(A) *log << A << std::endl 
 #define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
@@ -111,5 +113,10 @@ private:
 
 	void Goalie(Robot * gk);
 
+	// SKILLS //
+	
+	/** GotoPoint **/
+	PID* posPID;
+	PID* angPID;
 };
 
