@@ -471,7 +471,7 @@ void Soccer::setRobotPos(int id, double pos_tan)
 	}
 }
 
-double Soccer::getRobotAng(int id, double th)
+double Soccer::getRobotW(int id, double th)
 {
 	angPID[id].kp = 0.35;
 	angPID[id].ki = 0;
@@ -485,7 +485,7 @@ double Soccer::getRobotAng(int id, double th)
 	return -1*angPID[id].lastOut;
 }
 
-double Soccer::getRobotPos(int id, double pos_tan)
+double Soccer::getRobotvel_tan(int id, double pos_tan)
 {
 	posPID[id].kp = 0.2;
 	posPID[id].ki = 0.0;

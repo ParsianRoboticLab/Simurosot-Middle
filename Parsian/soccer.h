@@ -117,8 +117,8 @@ private:
 	void setRobotVel(int id, double v_tan, double w);
 	void setRobotAng(int id, double th);
 	void setRobotPos(int id, double pos_tan);
-	double getRobotAng(int id, double th);
-	double getRobotPos(int id, double pos_tan);
+	double getRobotW(int id, double th);
+	double getRobotvel_tan(int id, double pos_tan);
 	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel);
 	/** GotoPoint **/
 	PID* posPID;
