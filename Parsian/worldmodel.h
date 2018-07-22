@@ -3,6 +3,7 @@
 
 #include "geom.h"
 #include "base.h"
+#include "field.h"
 
 struct CMovingObject {
     rcsc::Vector2D pos, vel, acc;
