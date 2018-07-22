@@ -470,3 +470,32 @@ void Soccer::setRobotPos(int id, double pos_tan)
 		setRobotVel(1, 0, 0);
 	}
 }
+
+double Soccer::getRobotAng(int id, double th)
+{
+	angPID[id].kp = 0.35;
+	angPID[id].ki = 0;
+	angPID[id].kd = 0.05;
+	double diff{ wm->ourRobot(id).th - th };
+	if (diff > 180)
+		diff = -360 + diff;
+	if (diff < -180)
+		diff = 360 + diff;
+	angPID[id].run(diff);
+	return -1*angPID[id].lastOut;
+}
+
+double Soccer::getRobotPos(int id, double pos_tan)
+{
+	posPID[id].kp = 0.2;
+	posPID[id].ki = 0.0;
+	posPID[id].kd = 0.0;
+	double diff{ wm->ourRobot(1).pos.x - pos_tan };
+	if (fabs(diff) > 3) {
+		posPID[id].run(diff);
+		return -1*posPID[id].lastOut;
+	}
+	else {
+		return 0;
+	}
+}
