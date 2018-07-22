@@ -9,13 +9,18 @@ double ballPossession(const CWorldModel* _wm) {
 
 PID v[ROBOT_COUNT], w[ROBOT_COUNT];
 void getRobotWheelPID(const CRobot& r, double _w, double vel_tan, double& right_wheel, double& left_wheel) {
-	v[r.id].kp = 10; v[r.id].ki = 0; v[r.id].kd = 0.2;
-	vel_tan += vel_tan / 10;
-	v[r.id].run(vel_tan - r.vel.length());
-
-	w[r.id].kp = 1; w[r.id].ki = 0; w[r.id].kd = 0.2;
-	_w += _w;
-	w[r.id].run(_w - r.w);
+	if (vel_tan != 0)
+	{
+		v[r.id].kp = 10; v[r.id].ki = 0; v[r.id].kd = 0.2;
+		vel_tan += vel_tan / 10;
+		v[r.id].run(vel_tan - r.vel.length());
+	}
+	if (_w != 0)
+	{
+		w[r.id].kp = 1; w[r.id].ki = 0; w[r.id].kd = 0.2;
+		_w += _w;
+		w[r.id].run(_w - r.w);
+	}
 	getRobotWheel(w[r.id].lastOut, v[r.id].lastOut, right_wheel, left_wheel);
 }
 

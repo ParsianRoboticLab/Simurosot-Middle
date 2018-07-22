@@ -115,6 +115,7 @@ private:
 
 	// SKILLS //
 	void setRobotVel(int id, double v_tan, double w);
+	void setRobotAng(int id, double th);
 	void gotoPoint(Robot* robot, int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double pidDist1, double pidDist2);
 	/** GotoPoint **/
 	PID* posPID;

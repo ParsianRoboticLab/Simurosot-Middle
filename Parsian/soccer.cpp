@@ -18,7 +18,7 @@ Soccer::Soccer() {
 	SYSTEMTIME st;
 	GetLocalTime(&st);
 	char* log_c = new char[100];
-	sprintf(log_c, "parsian-simurosot/logs/log-%d-%d-%d-%d-%d-%d.txt", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
+	sprintf(log_c, "logs/log-%d-%d-%d-%d-%d-%d.txt", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond);
 	log = new std::ofstream(log_c);
 
 	// Initial Variables
@@ -441,4 +441,17 @@ void Soccer::sendmsg(){
 
 void Soccer::setRobotVel(int id, double vel_tan, double w) {
 	getRobotWheelPID(wm->ourRobot(id), w, vel_tan, robots[id].velocityRight, robots[id].velocityLeft);
+}
+
+void Soccer::setRobotAng(int id, double th) {
+	angPID[id].kp = 0.35;
+	angPID[id].ki = 0;
+	angPID[id].kd = 0.05;
+	double diff{ wm->ourRobot(id).th - th };
+	if (diff > 180)
+		diff = -360 + diff;
+	if (diff < -180)
+		diff = 360 + diff;
+	angPID[id].run(diff);
+	setRobotVel(1, 0, -angPID[id].lastOut);
 }
