@@ -205,6 +205,22 @@ public:
           return th();
       }
 
+	/*!
+	\brief calculate angle between 2 line created from 3 Vector2Ds
+	\param A first Vector2D
+	\param O middle Vector2D
+	\param B third Vector2D
+	\return desired angle between -180 and 180
+	*/
+	inline static AngleDeg angleOf(const Vector2D& A, const Vector2D& O, const Vector2D& B) {
+		Vector2D a1(A.x - O.x, A.y - O.y);
+		Vector2D a2(B.x - O.x, B.y - O.y);
+		return AngleDeg(AngleDeg::normalize_angle(
+			((a1).th().degree() - (a2).th().degree()))
+		);
+	}
+
+
     /*!
       \brief get new vector that XY values were set to absolute value.
       \return new vector that all values are absolute.
