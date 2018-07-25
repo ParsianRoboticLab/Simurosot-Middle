@@ -453,7 +453,7 @@ void Soccer::setRobotAng(int id, double th) {
 	if (diff < -180)
 		diff = 360 + diff;
 	angPID[id].run(diff);
-	setRobotVel(1, 0, -angPID[id].lastOut);
+	setRobotVel(id, 0, -angPID[id].lastOut);
 }
 
 double Soccer::getRobotW(int id, double th)
