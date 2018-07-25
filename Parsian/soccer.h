@@ -125,5 +125,10 @@ private:
 	PID* angPID;
 
 	void spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel);
+	/** Spin **/
+
+	void kick(int id, const rcsc::Vector2D&  targetPos);
+	/** Kick **/
+
 };
 

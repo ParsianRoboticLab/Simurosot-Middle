@@ -251,5 +251,8 @@
     <ClCompile Include="skills\spin.cpp">
       <Filter>Source Files\skills</Filter>
     </ClCompile>
+    <ClCompile Include="skills\kick.cpp">
+      <Filter>Source Files\skills</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

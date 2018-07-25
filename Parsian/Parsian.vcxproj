@@ -221,6 +221,7 @@
     <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc" />
     <ClCompile Include="roles\goalie.cpp" />
     <ClCompile Include="skills\gotopoint.cpp" />
+    <ClCompile Include="skills\kick.cpp" />
     <ClCompile Include="skills\spin.cpp" />
     <ClCompile Include="soccer.cpp" />
     <ClCompile Include="stdafx.cpp">
