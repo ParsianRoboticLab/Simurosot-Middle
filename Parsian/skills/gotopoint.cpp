@@ -4,16 +4,29 @@
 #include "../util/pid.h"
 
 void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel) {
-	double dist = wm->ourRobot(id).pos.dist(targetPos);
+	double pathdist = wm->ourRobot(id).pos.dist(targetPos);
 	double pathTh = -(targetPos - wm->ourRobot(id).pos).th().degree();
-	if (dist < 3) {
+	double angle{ fabs(wm->ourRobot(id).th - pathTh) };
+	if (angle > 180)
+		angle -= 360;
+	if (angle < -180)
+		angle += 360;
+	angle = fabs(angle);
+	/*if (pathdist < 3) {
 		setRobotAng(id, targetVel.th().degree());
+	}*/
+	if (angle <= 15)
+	{
+		setRobotVel(id, pathdist*0.2, 0);
 	}
-	else if (fabs(wm->ourRobot(id).th - pathTh) > 15) {
+	else if (angle >= 165 && angle <= 180) {
+		setRobotVel(id, -fabs(pathdist*0.2), 0);
+	}
+	else if (angle > 15 && angle <= 90) {
 		setRobotAng(id, pathTh);
 	}
-	else {
-		setRobotVel(id, dist*0.2, 0);
+	else if (angle > 90 && angle < 165) {
+		setRobotAng(id, 180 + pathTh);
 	}
 
 }
