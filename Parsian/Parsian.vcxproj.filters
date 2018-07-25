@@ -248,5 +248,8 @@
     <ClCompile Include="roles\goalie.cpp">
       <Filter>Source Files\roles</Filter>
     </ClCompile>
+    <ClCompile Include="skills\spin.cpp">
+      <Filter>Source Files\skills</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -123,5 +123,7 @@ private:
 	/** GotoPoint **/
 	PID* posPID;
 	PID* angPID;
+
+	void spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel);
 };
 
