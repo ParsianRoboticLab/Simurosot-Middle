@@ -13,7 +13,7 @@ void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vec
 		setRobotAng(id, pathTh);
 	}
 	else {
-		setRobotPos(id, targetPos.length());
+		setRobotVel(id, dist*0.2, 0);
 	}
 
 }
