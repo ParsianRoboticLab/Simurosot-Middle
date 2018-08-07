@@ -109,9 +109,10 @@ private:
 	bool ballInOurSide;
 	int playonCounter;
 	bool playonFlag;
-	void Defense(Robot * robots, int size);
+	void Defense(int ids[], int size);
+	void Pos(int ids[], int size);
 
-	void Goalie(Robot * gk);
+	void Goalie(int id);
 
 	// SKILLS //
 	void setRobotVel(int id, double v_tan, double w);

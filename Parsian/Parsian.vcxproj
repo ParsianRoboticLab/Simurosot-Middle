@@ -23,7 +23,7 @@
     <ProjectGuid>{8F9EB2A6-9200-4D57-A90E-14693FEB6660}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Parsian</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -215,6 +215,7 @@
     <ClCompile Include="plays\ourko.cpp" />
     <ClCompile Include="plays\ourpk.cpp" />
     <ClCompile Include="plays\playon.cpp" />
+    <ClCompile Include="positionplan.cpp" />
     <ClCompile Include="proto\messages_parsian_simurosot_data_wrapper.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />

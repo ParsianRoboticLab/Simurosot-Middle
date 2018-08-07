@@ -27,7 +27,7 @@ Soccer::Soccer() {
 	playonFlag = false;
 	debugs = new Logs();
 	draws = new Draws();
-	DetectionServer = new Server("172.21.224.30", 10040);
+	DetectionServer = new Server("192.168.43.105", 10040);
 	PlotServer = new Server("192.168.43.105", 10030);
 	LOG("START");
 
