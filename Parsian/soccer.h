@@ -111,6 +111,7 @@ private:
 	bool playonFlag;
 	void Defense(int ids[], int size);
 	void Pos(int ids[], int size);
+	void PlayMake(int id);
 
 	void Goalie(int id);
 

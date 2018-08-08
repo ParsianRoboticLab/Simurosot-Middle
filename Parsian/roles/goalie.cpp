@@ -2,15 +2,19 @@
 #include "../soccer.h"
 
 void Soccer::Goalie(int id) {
+	rcsc::Vector2D ballPos{wm->getBall().pos + wm->getBall().vel};
 	rcsc::Line2D ballPath{ wm->getBall().pos, wm->getBall().pos + wm->getBall().vel.normalizedVector()*1000 };
 	rcsc::Line2D goalLine{ Field::ourGoalB(), Field::ourGoalT() };
 	rcsc::Vector2D p;
 	p = ballPath.intersection(goalLine);
 	if (wm->getBall().vel.length() < 0.5) p.invalidate();
-	else if (wm->getBall().pos.x < -100 && wm->getBall().pos.y > Field::goalWidth/2) p.invalidate();
-	else if (wm->getBall().pos.x < -100 && wm->getBall().pos.y < -Field::goalWidth / 2) p.invalidate();
-	else if (wm->getBall().pos.x > 45) p.invalidate();
+	else if (ballPos.x < -100 && ballPos.y > Field::goalWidth/2) p.invalidate();
+	else if (ballPos.x < -100 && ballPos.y < -Field::goalWidth / 2) p.invalidate();
+	else if (ballPos.x > 45) p.invalidate();
 	double y;
+	bool forward{false};
+	if (Field::ourPenaltyBRect().contains(ballPos))
+		forward = true;
 	if (p.isValid()) {
 		y = p.y;
 	}
@@ -38,18 +42,25 @@ void Soccer::Goalie(int id) {
 		if (angle < 90) pathTh = 90;
 		else pathTh = -90;
 	}
-	if (angle <= 2)
+	if (!forward)
 	{
-		setRobotVel(id, pathdist*0.3, 0);
+		if (angle <= 15)
+		{
+			setRobotVel(id, pathdist*0.3, 0);
+		}
+		else if (angle >= 165 && angle <= 180) {
+			setRobotVel(id, -fabs(pathdist*0.3), 0);
+		}
+		else if (angle > 15 && angle <= 90) {
+			setRobotAng(id, pathTh);
+		}
+		else if (angle > 90 && angle < 165) {
+			setRobotAng(id, 180 + pathTh);
+		}
 	}
-	else if (angle >= 178 && angle <= 180) {
-		setRobotVel(id, -fabs(pathdist*0.3), 0);
-	}
-	else if (angle > 2 && angle <= 90) {
-		setRobotAng(id, pathTh);
-	}
-	else if (angle > 90 && angle < 178) {
-		setRobotAng(id, 180 + pathTh);
+	else
+	{
+		kick(id, Field::oppGoal());
 	}
 
 	// SPIN

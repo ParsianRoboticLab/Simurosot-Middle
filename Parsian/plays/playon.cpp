@@ -18,7 +18,8 @@ void Soccer::playon() {
 		}
 	}
 	last_pm = playmake;
-	kick(playmake, Field::oppGoal());
+
+	PlayMake(playmake);
 	
 	int defenseNum = -1;
 	if (wm->getBall().pos.x < -30) defenseNum = 3;
@@ -63,6 +64,6 @@ void Soccer::playon() {
 	LOG("PM:   " << playmake);
 	LOG("POS:  " << other[0] << other[1]);
 
-	kick(playmake, Field::oppGoal());
+	//kick(playmake, Field::oppGoal());
 	
 }
