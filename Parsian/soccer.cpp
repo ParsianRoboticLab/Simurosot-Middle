@@ -34,6 +34,7 @@ Soccer::Soccer() {
 	// SKILLS
 	posPID = new PID[ROBOT_COUNT];
 	angPID = new PID[ROBOT_COUNT];
+	last_pm = -1;
 
 }
 
@@ -277,49 +278,8 @@ void Soccer::setBall(Vector3D* ball) {
 void Soccer::run(Robot* _robots) {
 	LOG("RUN");
 	robots = _robots;
-	if (playonCounter > 20 || playonFlag == true) updateGS(PM_PlayOn);
-	playonCounter++;
-	switch (wm->gs) {
-	case GameMode::PlayOn:
-		playon();
-		break;
-	case GameMode::FreeBall_LeftTop:
-		freeballLT();
-		break;
-	case GameMode::FreeBall_LeftBot:
-		freeballLB();
-		break;
-	case GameMode::FreeBall_RightTop:
-		freeballRT();
-		break;
-	case GameMode::FreeBall_RightBot:
-		freeballRB();
-		break;
-	case GameMode::OurKickOff:
-		ourKO();
-		break;
-	case GameMode::OppKickOff:
-		oppKO();
-		break;
-	case GameMode::OurPenaltyKick:
-		ourPK();
-		break;
-	case GameMode::OppPenaltyKick:
-		oppPK();
-		break;
-	case GameMode::OurFreeKick:
-		ourFK();
-		break;
-	case GameMode::OppFreeKick:
-		oppFK();
-		break;
-	case GameMode::OurGoalKick:
-		ourGK();
-		break;
-	case GameMode::OppGoalKick:
-		oppGK();
-		break;
-	}
+	updateGS(PM_PlayOn);
+	playon();
 	LOG("END RUN");
 }
 

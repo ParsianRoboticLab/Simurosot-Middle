@@ -24,10 +24,10 @@ void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 			}
 		}
 		if (num > 1) {
-			ballPos.assign(ballPos.x/2, ballPos.y/2);
+			ballPos.assign(ballPos.x / 2, ballPos.y / 2);
+			behindPos.assign(behindPos.x / 2, behindPos.y / 2);
 		}
 	}
-
 	else {
 		if (wm->ourRobot(id).pos.dist(behindPos) > 25)
 			gotoPoint(id, behindPos, targetPos);
@@ -35,5 +35,10 @@ void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 			gotoPoint(id, ballPos, targetPos);
 
 	}	
+
+	// SPIN
+	//if (wm->getBall().vel.length() < 1 && wm->getBall().pos.dist(wm->ourRobot(id).pos) < 10) {
+	//	spin(id, Field::oppGoal(), 30);
+	//}
 
 }

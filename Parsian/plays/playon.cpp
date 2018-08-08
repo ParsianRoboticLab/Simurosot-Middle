@@ -5,21 +5,23 @@ std::ifstream ifile;
 PID p;
 void Soccer::playon() {
 
-	if (env->currentBall.pos.x > 10) ballInOurSide = false;
-	else if (env->currentBall.pos.x < 10) ballInOurSide = true;
-
+	
 	Goalie(0);
-
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 1; i < 5; i++) {
-		double t_cost = wm->ourRobot(i).pos.dist(wm->getBall().pos + wm->getBall().vel + rcsc::Vector2D(-20,0));
+		double t_cost = wm->ourRobot(i).pos.dist(wm->getBall().pos + wm->getBall().vel + rcsc::Vector2D(-20, 0));
+		//if (i == last_pm) t_cost -= 10;
 		if (t_cost < pm_cost) {
 			pm_cost = t_cost;
 			playmake = i;
 		}
 	}
+	last_pm = playmake;
 
+	kick(playmake, Field::oppGoal());
+	return;
+	
 	int defenseNum = -1;
 	if (wm->getBall().pos.x < -30) defenseNum = 3;
 	else if (wm->getBall().pos.x > 30) defenseNum = 1;
@@ -48,17 +50,22 @@ void Soccer::playon() {
 	LOG("PM:   " << playmake);
 	
 	Defense(defense, defenseNum);
-	//gotoPoint(0, rcsc::Vector2D(-Field::width/2, wm->getBall().pos.y), rcsc::Vector2D(0, 1000));
-	//gotoPoint(2, rcsc::Vector2D(0, 0), Field::oppGoal());
+	int other[2] = { -1, -1 };
+	for (int o = 0; o < 2; o++) {
+		for (int i = 1; i < 5; i++) {
+			if (i == playmake) continue;
+			bool same = false;
+			for (int j = 0; j < 3; j++) if (defense[j] == i) same = true;
+			for (int j = 0; j < 2; j++) if (other[j] == i) same = true;
+			if (same) continue;
+			other[o] = i;
+		}
+	}
+	Pos(other, 3 - defenseNum);
+	LOG("DEF:  " << defense[0] << defense[1] << defense[2]);
+	LOG("PM:   " << playmake);
+	LOG("POS:  " << other[0] << other[1]);
+
 	kick(playmake, Field::oppGoal());
-	//gotoPoint(3, rcsc::Vector2D(-Field::width / 2 + Field::penaltyBheight, wm->getBall().pos.y + 10), rcsc::Vector2D(0, 1000));
-	//gotoPoint(4, rcsc::Vector2D(-Field::width / 2 + Field::penaltyBheight, wm->getBall().pos.y - 10), rcsc::Vector2D(0, 1000));
-
-	//setRobotVel(1, 1, 0);
-//	Goalie(env);
-	//Position(&robots[2], 0, 0);
-	//Position(&robots[1], -50, -50);
-	//Position(&robots[3], -50, -50);
-	//Position(&robots[4], -50, -50);
-
+	
 }

@@ -130,6 +130,7 @@ private:
 
 	void kick(int id, const rcsc::Vector2D&  targetPos);
 	/** Kick **/
-
+	double pm_treshold;
+	int last_pm;
 };
 

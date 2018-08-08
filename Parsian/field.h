@@ -39,7 +39,7 @@ public:
     static rcsc::Vector2D ourGoal()  { return rcsc::Vector2D{-width/2,   0}; }
     static rcsc::Vector2D ourGoalT() { return rcsc::Vector2D{-width/2, -20}; }
     static rcsc::Vector2D ourGoalB() { return rcsc::Vector2D{-width/2,  20}; }
-    static rcsc::Vector2D oppGoal()  { return rcsc::Vector2D{ width/2,   0}; }
+    static rcsc::Vector2D oppGoal()  { return rcsc::Vector2D{ width/2 + 20,   0}; }
     static rcsc::Vector2D oppGoalT() { return rcsc::Vector2D{ width/2, -20}; }
     static rcsc::Vector2D oppGoalB() { return rcsc::Vector2D{ width/2,  20}; }
 
