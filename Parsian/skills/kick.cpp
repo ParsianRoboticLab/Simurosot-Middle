@@ -11,34 +11,22 @@ void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 	norm = norm.normalize();
 	rcsc::Vector2D prependicular{ norm.rotatedVector(90) };
 	rcsc::Vector2D behindPos{ ballPos + norm * 20 };
-	rcsc::Vector2D avoidPos{ ballPos + prependicular * 10 };
-	
-	if (Field::ourPenaltyBRect().contains(ballPos)) {
-		gotoPoint(id, rcsc::Vector2D(0, 0), rcsc::Vector2D(1000, 0));
+	rcsc::Vector2D avoidPos{ ballPos + prependicular * 20 };
+	rcsc::Circle2D robotArea{ robotPos, ROBOT_HALF_WIDTH*sqrt(2) };
+	rcsc::Vector2D sol1, sol2;
+	if (robotArea.intersection(rcsc::Ray2D{ ballPos, targetPos }, &sol1, &sol2) > 0)
+	{
+		if (avoidPos.x < -Field::width / 2 + ROBOT_WIDTH || avoidPos.x > Field::width / 2 + ROBOT_WIDTH || avoidPos.y < -Field::height / 2 + ROBOT_WIDTH || avoidPos.x > Field::height / 2 + ROBOT_WIDTH)
+			avoidPos = ballPos;
+		gotoPoint(id, avoidPos, behindPos);
 	}
-	if (Field::isInPushingArea(wm->getBall().pos)) {
-		int num = 0;
-		for (int i = 0; i < 5; i++) {
-			if (Field::isInPushingArea(wm->ourRobot(i).pos)) {
-				num++;
-			}
-		}
-		if (num > 1) {
-			ballPos.assign(ballPos.x / 2, ballPos.y / 2);
-			behindPos.assign(behindPos.x / 2, behindPos.y / 2);
-		}
+	else if (wm->ourRobot(id).pos.dist(behindPos) > 25)
+	{
+		if (avoidPos.x < -Field::width / 2 + ROBOT_WIDTH || avoidPos.x > Field::width / 2 + ROBOT_WIDTH || avoidPos.y < -Field::height / 2 + ROBOT_WIDTH || avoidPos.x > Field::height / 2 + ROBOT_WIDTH)
+			behindPos = ballPos;
+		gotoPoint(id, behindPos, targetPos);
 	}
 	else {
-		if (wm->ourRobot(id).pos.dist(behindPos) > 25)
-			gotoPoint(id, behindPos, targetPos);
-		else
-			gotoPoint(id, ballPos, targetPos);
-
-	}	
-
-	// SPIN
-	//if (wm->getBall().vel.length() < 1 && wm->getBall().pos.dist(wm->ourRobot(id).pos) < 10) {
-	//	spin(id, Field::oppGoal(), 30);
-	//}
-
+		gotoPoint(id, ballPos, targetPos);
+	}
 }

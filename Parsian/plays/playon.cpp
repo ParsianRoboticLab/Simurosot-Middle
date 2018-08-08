@@ -4,32 +4,30 @@
 std::ifstream ifile;
 PID p;
 void Soccer::playon() {
-
-	
 	Goalie(0);
+	
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
-	for (int i = 1; i < 5; i++) {
+	for (int i = 2; i < 5; i++) {
 		double t_cost = wm->ourRobot(i).pos.dist(wm->getBall().pos + wm->getBall().vel + rcsc::Vector2D(-20, 0));
-		//if (i == last_pm) t_cost -= 10;
+		if (i == last_pm) t_cost -= 10;
+		if (wm->ourRobot(i).pos.x > wm->getBall().pos.x) t_cost += 10000;
 		if (t_cost < pm_cost) {
 			pm_cost = t_cost;
 			playmake = i;
 		}
 	}
 	last_pm = playmake;
-
 	kick(playmake, Field::oppGoal());
-	return;
 	
 	int defenseNum = -1;
 	if (wm->getBall().pos.x < -30) defenseNum = 3;
 	else if (wm->getBall().pos.x > 30) defenseNum = 1;
 	else defenseNum = 2;
+	defenseNum = 1;
+	int defense[3] = { 1, -1, -1 };
 
-	int defense[3] = { -1, -1, -1 };
-	
-	for (int d = 0; d < defenseNum; d++) {
+	/*for (int d = 0; d < defenseNum; d++) {
 		int bestID = -1;
 		int best = 100000000;
 		for (int i = 1; i < 5; i++) {
@@ -45,11 +43,11 @@ void Soccer::playon() {
 			}
 		}
 		defense[d] = bestID;
-	}
+	}*/
 	LOG("DEF:  " << defense[0] << defense[1] << defense[2]);
 	LOG("PM:   " << playmake);
-	
 	Defense(defense, defenseNum);
+	return;
 	int other[2] = { -1, -1 };
 	for (int o = 0; o < 2; o++) {
 		for (int i = 1; i < 5; i++) {
