@@ -19,17 +19,17 @@ void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vec
 		}
 		
 	}
-	if (angle <= 5)
+	if (angle <= 15)
 	{
-		setRobotVel(id, pathdist*0.2, 0);
+		setRobotVel(id, pathdist*0.3, 0);
 	}
-	else if (angle >= 175 && angle <= 180) {
-		setRobotVel(id, -fabs(pathdist*0.2), 0);
+	else if (angle >= 165 && angle <= 180) {
+		setRobotVel(id, -pathdist*0.3, 0);
 	}
-	else if (angle > 5 && angle <= 90) {
+	else if (angle > 15 && angle <= 90) {
 		setRobotAng(id, pathTh);
 	}
-	else if (angle > 90 && angle < 175) {
+	else if (angle > 90 && angle < 165) {
 		setRobotAng(id, 180 + pathTh);
 	}
 
