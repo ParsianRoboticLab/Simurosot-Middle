@@ -2,11 +2,14 @@
 #include "../soccer.h"
 
 void Soccer::Goalie(int id) {
-	rcsc::Segment2D ballPath{ wm->getBall().pos, wm->getBall().pos + wm->getBall().vel.normalizedVector()*1000 };
-	rcsc::Segment2D goalLine{ Field::ourGoalB(), Field::ourGoalT() };
+	rcsc::Line2D ballPath{ wm->getBall().pos, wm->getBall().pos + wm->getBall().vel.normalizedVector()*1000 };
+	rcsc::Line2D goalLine{ Field::ourGoalB(), Field::ourGoalT() };
 	rcsc::Vector2D p;
-	p = ballPath.intersection(goalLine, true);
+	p = ballPath.intersection(goalLine);
 	if (wm->getBall().vel.length() < 0.5) p.invalidate();
+	else if (wm->getBall().pos.x < -100 && wm->getBall().pos.y > Field::goalWidth/2) p.invalidate();
+	else if (wm->getBall().pos.x < -100 && wm->getBall().pos.y < -Field::goalWidth / 2) p.invalidate();
+	else if (wm->getBall().pos.x > 45) p.invalidate();
 	double y;
 	if (p.isValid()) {
 		y = p.y;
