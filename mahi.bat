@@ -7,5 +7,5 @@ Rem Move Parsian Simurosot dll auto
 echo "Hello There"
 COPY Release\Parsian.dll ..\Strategy4Yellow.dll
 echo "Done"
-START C:\Strategy\Simurosot\ConsoleDebugger\Debug\ConsoleDebugger.exe
+START ..\Simurosot-master-1\ConsoleDebugger\Debug\ConsoleDebugger.exe
 START ../WorldModel.exe

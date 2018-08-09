@@ -56,12 +56,12 @@ void Soccer::Pos(int id[], int size) {
 			}
 
 		}
-		if (ballPos.y < -Field::height / 4) {
+		else if (ballPos.y < -Field::height / 4) {
 			gotoPoint(id[0], rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2 + 25), rcsc::Vector2D(1000, 0));
 			gotoPoint(id[1], rcsc::Vector2D(73, 0), rcsc::Vector2D(1000, 0));
 		}
 		else if (ballPos.y > Field::height / 4) {
-			gotoPoint(id[0], rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2 + 25), rcsc::Vector2D(1000, 0));
+			gotoPoint(id[0], rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2 - 25), rcsc::Vector2D(1000, 0));
 			gotoPoint(id[1], rcsc::Vector2D(73, 0), rcsc::Vector2D(1000, 0));
 		}
 		else {
@@ -75,8 +75,8 @@ void Soccer::Pos(int id[], int size) {
 				upper = id[1];
 				lower = id[0];
 			}
-			gotoPoint(upper, rcsc::Vector2D(ballPos.x, Field::penaltyAheight / 2 + 10), rcsc::Vector2D(1000, 0));
-			gotoPoint(lower, rcsc::Vector2D(ballPos.x, -Field::penaltyAheight / 2 - 10), rcsc::Vector2D(1000, 0));
+			gotoPoint(upper, rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2 + 10), rcsc::Vector2D(1000, 0));
+			gotoPoint(lower, rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2 - 10), rcsc::Vector2D(1000, 0));
 
 		}
 		break;
