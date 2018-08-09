@@ -5,7 +5,7 @@
 
 void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 
-	rcsc::Vector2D ballPos{ wm->getBall().pos + wm->getBall().vel*(5. / 5.) };
+	rcsc::Vector2D ballPos{ wm->getBall().pos + wm->getBall().vel*(15. / 5.) };
 	rcsc::Vector2D robotPos{ wm->ourRobot(id).pos + wm->ourRobot(id).vel*(5. / 5.) };
 	rcsc::Vector2D norm{ ballPos - targetPos };
 	norm = norm.normalize();
@@ -18,16 +18,16 @@ void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 	{
 		if (avoidPos.x < -Field::width / 2 + ROBOT_WIDTH || avoidPos.x > Field::width / 2 + ROBOT_WIDTH || avoidPos.y < -Field::height / 2 + ROBOT_WIDTH || avoidPos.x > Field::height / 2 + ROBOT_WIDTH)
 			avoidPos = ballPos;
-		gotoPoint(id, avoidPos, behindPos);
+		gotoPoint(id, avoidPos, behindPos, 0.3);
 	}
 	else if (wm->ourRobot(id).pos.dist(behindPos) > 25)
 	{
 		if (avoidPos.x < -Field::width / 2 + ROBOT_WIDTH || avoidPos.x > Field::width / 2 + ROBOT_WIDTH || avoidPos.y < -Field::height / 2 + ROBOT_WIDTH || avoidPos.x > Field::height / 2 + ROBOT_WIDTH)
 			behindPos = ballPos;
-		gotoPoint(id, behindPos, targetPos);
+		gotoPoint(id, behindPos, targetPos, 0.3);
 	}
 	else {
-		gotoPoint(id, ballPos, targetPos);
+		gotoPoint(id, ballPos, targetPos, 0.3);
 	}
 	if (Field::oppPenaltyARect().contains(wm->getBall().pos) && wm->ourRobot(id).pos.dist(wm->getBall().pos) < 10) {
 

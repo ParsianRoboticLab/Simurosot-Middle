@@ -5,13 +5,12 @@ std::ifstream ifile;
 PID p;
 void Soccer::playon() {
 	Goalie(0);
-	
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 1; i < 5; i++) {
 		double t_cost = wm->ourRobot(i).pos.dist(wm->getBall().pos + wm->getBall().vel + rcsc::Vector2D(-20, 0));
 		if (i == last_pm) t_cost -= 10;
-		if (wm->ourRobot(i).pos.x > wm->getBall().pos.x + 20) t_cost += 10000;
+		if (wm->ourRobot(i).pos.x > wm->getBall().pos.x + 10) t_cost += 10000;
 		if (t_cost < pm_cost) {
 			pm_cost = t_cost;
 			playmake = i;

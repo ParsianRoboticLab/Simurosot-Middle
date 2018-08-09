@@ -112,7 +112,7 @@ private:
 	void Defense(int ids[], int size);
 	void Pos(int ids[], int size);
 	void PlayMake(int id);
-
+	
 	void Goalie(int id);
 
 	// SKILLS //
@@ -121,7 +121,7 @@ private:
 	double getRobotW(int id, double th);
 	//void setRobotPos(int id, double pos_tan);
 	//double getRobotvel_tan(int id, double pos_tan);
-	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel);
+	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp = 0.2);
 	/** GotoPoint **/
 	PID* posPID;
 	PID* angPID;

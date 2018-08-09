@@ -3,7 +3,7 @@
 
 void Soccer::Defense(int id[], int size) {
 	
-	const rcsc::Vector2D& bp = wm->getBall().pos - wm->getBall().vel*0.5;
+	const rcsc::Vector2D& bp = wm->getBall().pos + wm->getBall().vel*0.5;
 	const double def_w = -Field::width / 2 + Field::penaltyAwidth + 15;
 	double y = bp.y;
 	switch (size)
@@ -12,9 +12,12 @@ void Soccer::Defense(int id[], int size) {
 		if (y < -Field::penaltyAheight + 5) y = -Field::penaltyAheight / 2 + 2;
 		if (y > Field::penaltyAheight / 2 - 5) y = Field::penaltyAheight / 2 - 2;
 
-		if (wm->getBall().pos.x > -Field::width / 2 + Field::penaltyAwidth + 10)
-			gotoPoint(id[0], rcsc::Vector2D(def_w, y), rcsc::Vector2D(0, 1000));
+		if (wm->getBall().pos.dist(Field::ourGoal()) > 40 && wm->getBall().pos.x > -Field::width / 2 + Field::penaltyAwidth + 10)
+			gotoPoint(id[0], rcsc::Vector2D(def_w, y*0.6), rcsc::Vector2D(0, 1000));
 		else {
+			if (wm->getBall().pos.x > -Field::width / 2 + Field::penaltyAwidth + 10) {
+				gotoPoint(id[0], rcsc::Vector2D(def_w, y), rcsc::Vector2D(0, 1000));
+			}
 			if (wm->getBall().pos.y > 0) {
 				gotoPoint(id[0], rcsc::Vector2D(bp.x - 10, Field::penaltyAheight/2 + 25), rcsc::Vector2D(1000, 0));
 			}

@@ -3,7 +3,7 @@
 #include "../util/bangbang.h"
 #include "../util/pid.h"
 
-void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel) {
+void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp) {
 	double pathdist = wm->ourRobot(id).pos.dist(targetPos);
 	double pathTh = -(targetPos - wm->ourRobot(id).pos).th().degree();
 	double angle{ fabs(wm->ourRobot(id).th - pathTh) };
@@ -21,10 +21,10 @@ void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vec
 	}
 	if (angle <= 15)
 	{
-		setRobotVel(id, pathdist*0.3, 0);
+		setRobotVel(id, pathdist*kp, 0);
 	}
 	else if (angle >= 165 && angle <= 180) {
-		setRobotVel(id, -pathdist*0.3, 0);
+		setRobotVel(id, -pathdist*kp, 0);
 	}
 	else if (angle > 15 && angle <= 90) {
 		setRobotAng(id, pathTh);

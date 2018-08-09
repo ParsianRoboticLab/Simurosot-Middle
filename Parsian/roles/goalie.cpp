@@ -2,7 +2,7 @@
 #include "../soccer.h"
 
 void Soccer::Goalie(int id) {
-	rcsc::Vector2D ballPos{wm->getBall().pos + wm->getBall().vel};
+	rcsc::Vector2D ballPos{wm->getBall().pos + wm->getBall().vel*5};
 	rcsc::Line2D ballPath{ wm->getBall().pos, wm->getBall().pos + wm->getBall().vel.normalizedVector()*1000 };
 	rcsc::Line2D goalLine{ Field::ourGoalB(), Field::ourGoalT() };
 	rcsc::Vector2D p;
@@ -13,7 +13,7 @@ void Soccer::Goalie(int id) {
 	else if (ballPos.x > 45) p.invalidate();
 	double y;
 	bool forward{false};
-	if (Field::ourPenaltyBRect().contains(ballPos))
+	if (Field::ourPenaltyBRect().contains(ballPos) && wm->getBall().vel.length() < 1.5)
 		forward = true;
 	p.invalidate();
 	if (p.isValid()) {
@@ -65,7 +65,7 @@ void Soccer::Goalie(int id) {
 	}
 
 	// SPIN
-	if (wm->getBall().pos.dist(wm->ourRobot(id).pos) < 8.5) {
+	if (wm->getBall().pos.dist(wm->ourRobot(id).pos) < 8.5 && wm->getBall().vel.length() < 2) {
 		LOG("SPIN GOALIE");
 		if (wm->getBall().pos.y > 0) setRobotVel(id, 0, 30);
 		else setRobotVel(id, 0, -30);
