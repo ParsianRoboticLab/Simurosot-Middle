@@ -33,12 +33,12 @@ void Soccer::Pos(int id[], int size) {
 		if (dist0 < 40)
 			spin(id[0], Field::oppGoal(), 30);
 		if (ballPos.y < -Field::height / 4) {
-			gotoPoint(id[0], rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2), rcsc::Vector2D(1000, 0));
-			gotoPoint(id[1], rcsc::Vector2D(80, 0), rcsc::Vector2D(1000, 0));
+			gotoPoint(id[0], rcsc::Vector2D(std::fmax(ballPos.x, -70), Field::penaltyBheight / 2 + 20), rcsc::Vector2D(1000, 0));
+			gotoPoint(id[1], rcsc::Vector2D(73, 0), rcsc::Vector2D(1000, 0));
 		}
 		else if (ballPos.y > Field::height / 4) {
-			gotoPoint(id[0], rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2), rcsc::Vector2D(1000, 0));
-			gotoPoint(id[1], rcsc::Vector2D(80, 0), rcsc::Vector2D(1000, 0));
+			gotoPoint(id[0], rcsc::Vector2D(std::fmax(ballPos.x, -70), -Field::penaltyBheight / 2 + 20), rcsc::Vector2D(1000, 0));
+			gotoPoint(id[1], rcsc::Vector2D(73, 0), rcsc::Vector2D(1000, 0));
 		}
 		else {
 			// matching
@@ -51,8 +51,8 @@ void Soccer::Pos(int id[], int size) {
 				upper = id[1];
 				lower = id[0];
 			}
-			gotoPoint(upper, rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2), rcsc::Vector2D(1000, 0));
-			gotoPoint(lower, rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2), rcsc::Vector2D(1000, 0));
+			gotoPoint(upper, rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2 + 20), rcsc::Vector2D(1000, 0));
+			gotoPoint(lower, rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2 + 20), rcsc::Vector2D(1000, 0));
 		}
 		break;
 	}

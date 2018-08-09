@@ -29,4 +29,9 @@ void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
 	else {
 		gotoPoint(id, ballPos, targetPos);
 	}
+	if (Field::oppPenaltyARect().contains(wm->getBall().pos) && wm->ourRobot(id).pos.dist(wm->getBall().pos) < 10) {
+
+		spin(id, Field::oppGoal(), 50);
+
+	}
 }

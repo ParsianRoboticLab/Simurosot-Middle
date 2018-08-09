@@ -15,6 +15,7 @@ void Soccer::Goalie(int id) {
 	bool forward{false};
 	if (Field::ourPenaltyBRect().contains(ballPos))
 		forward = true;
+	p.invalidate();
 	if (p.isValid()) {
 		y = p.y;
 	}
