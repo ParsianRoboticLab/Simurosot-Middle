@@ -15,7 +15,6 @@ void Soccer::playon() {
 	ifile.close();
 	return;*/
 	Goalie(0);
-	return;
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 1; i < 5; i++) {
