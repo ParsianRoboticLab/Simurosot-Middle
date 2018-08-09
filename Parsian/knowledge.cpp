@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "knowledge.h"
+#include "base.h"
 
 double ballPossession(const CWorldModel* _wm) {
     if (_wm->getBall().pos.x < 0) return 0;
@@ -44,6 +45,7 @@ void getRobotWheel(double w, double vel_tan, double& right_wheel, double& left_w
 		left_wheel = 150;
 		right_wheel *= k;
 	}
+
 	
 
 }

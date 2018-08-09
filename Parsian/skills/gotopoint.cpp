@@ -6,7 +6,13 @@
 void Soccer::gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp) {
 	double pathdist = wm->ourRobot(id).pos.dist(targetPos);
 	double pathTh = -(targetPos - wm->ourRobot(id).pos).th().degree();
+	#ifndef YELLOW
+	pathTh *= -1;
+	#endif // !YELLOW
 	double angle{ fabs(wm->ourRobot(id).th - pathTh) };
+	#ifndef YELLOW
+	angle = 180 - angle;
+	#endif // !YELLOW
 	if (angle > 180)
 		angle -= 360;
 	if (angle < -180)

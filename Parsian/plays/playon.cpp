@@ -4,6 +4,15 @@
 std::ifstream ifile;
 PID p;
 void Soccer::playon() {
+	/*ifile.open("conf.txt");
+	double x{}, y{};
+	ifile >> x;
+	ifile >> y;
+	//double pathTh = (rcsc::Vector2D(x, y) - wm->ourRobot(1).pos).th().degree();
+	//setRobotAng(1, pathTh);
+	gotoPoint(1, rcsc::Vector2D(x, y), Field::oppGoal());
+	ifile.close();
+	return;*/
 	Goalie(0);
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
