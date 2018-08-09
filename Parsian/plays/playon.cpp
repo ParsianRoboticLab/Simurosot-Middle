@@ -10,10 +10,12 @@ void Soccer::playon() {
 	ifile >> y;
 	//double pathTh = (rcsc::Vector2D(x, y) - wm->ourRobot(1).pos).th().degree();
 	//setRobotAng(1, pathTh);
-	gotoPoint(1, rcsc::Vector2D(x, y), Field::oppGoal());
+	//gotoPoint(1, rcsc::Vector2D(x, y), Field::oppGoal());
+	spin(1, Field::oppGoal(), 15);
 	ifile.close();
 	return;*/
 	Goalie(0);
+	return;
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 1; i < 5; i++) {

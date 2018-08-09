@@ -12,5 +12,9 @@ void Soccer::spin(int id, const rcsc::Vector2D&  targetPos, const double &target
 	double vel_w{ (angle > 0) ? -40. : 40. };
 	if (targetVel != -1)
 		vel_w = (angle > 0) ? -targetVel : targetVel;
+	#ifndef YELLOW
+	vel_w *= -1;
+	#endif // !YELLOW
+
 	setRobotVel(id, 0, vel_w);
 }
