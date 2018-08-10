@@ -4,16 +4,6 @@
 std::ifstream ifile;
 PID p;
 void Soccer::playon() {
-	/*ifile.open("conf.txt");
-	double x{}, y{};
-	ifile >> x;
-	ifile >> y;
-	//double pathTh = (rcsc::Vector2D(x, y) - wm->ourRobot(1).pos).th().degree();
-	//setRobotAng(1, pathTh);
-	//gotoPoint(1, rcsc::Vector2D(x, y), Field::oppGoal());
-	spin(1, Field::oppGoal(), 15);
-	ifile.close();
-	return;*/
 	Goalie(0);
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
@@ -36,7 +26,7 @@ void Soccer::playon() {
 	else defenseNum = 2;
 	defenseNum = 1;
 	int defense[3] = { -1, -1, -1 };
-	rcsc::Vector2D poses[3] = { Field::ourGoalT(), Field::ourGoalB(), Field::ourGoal() };
+	rcsc::Vector2D poses[3] = { Field::ourGoal(), Field::ourGoalB(), Field::ourGoalT() };
 	for (int d = 0; d < defenseNum; d++) {
 		int bestID = -1;
 		int best = 100000000;

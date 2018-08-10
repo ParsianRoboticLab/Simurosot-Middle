@@ -14,6 +14,6 @@ void Soccer::PlayMake(int id) {
 		gotoPoint(id, rcsc::Vector2D(0, 0), rcsc::Vector2D(0, 1000));
 	}
 	else  {
-		kick(id, Field::oppGoal());
+		kick(id, Field::oppGoal() + rcsc::Vector2D(15, 0));
 	}
 }
