@@ -26,7 +26,7 @@ void Soccer::Defense(int id[], int size) {
 			}
 		}
 
-		if (Field::oppPenaltyARect().contains(wm->ourRobot(id[0]).pos)) {
+		if (Field::ourPenaltyARect().contains(wm->ourRobot(id[0]).pos)) {
 			gotoPoint(0, rcsc::Vector2D(0, 0), rcsc::Vector2D(0, 1000));
 		}
 
