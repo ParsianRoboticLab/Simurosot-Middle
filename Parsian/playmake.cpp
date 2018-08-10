@@ -6,7 +6,8 @@ void Soccer::PlayMake(int id) {
 	double margin{20};
 	/*if (wm->ourRobot(id).vel.length() > 2)
 		margin = 17;*/
-	if (rcsc::Rect2D{ Field::width / 2 - Field::penaltyAwidth - margin, -Field::penaltyAheight / 2 - margin, Field::penaltyAwidth, Field::penaltyAheight + margin }.contains(wm->getBall().pos)) {
+	if (rcsc::Rect2D{ Field::width / 2 - Field::penaltyAwidth - margin, -Field::penaltyAheight / 2 - margin, Field::penaltyAwidth, Field::penaltyAheight + margin }.contains(wm->getBall().pos)
+		&& wm->ourRobot(id).pos.dist(wm->getBall().pos) < 9) {
 		spin(id, Field::oppGoal(), 40);
 	}
 	else if (Field::ourPenaltyBRect().contains(wm->getBall().pos)) {
