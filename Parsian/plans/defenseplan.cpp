@@ -32,8 +32,12 @@ void Soccer::Defense(int id[], int size) {
 
 		if (wm->getBall().pos.dist(wm->ourRobot(id[0]).pos) < 8.5) {
 			LOG("SPIN GOALIE");
-			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, 30);
-			else setRobotVel(id[0], 0, -30);
+			double spinnSpid{ 30 };
+			#ifndef YELLOW
+			spinnSpid *= -1;
+			#endif // !YELLOW
+			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, spinnSpid);
+			else setRobotVel(id[0], 0, -spinnSpid);
 		}
 
 		break;
@@ -53,8 +57,12 @@ void Soccer::Defense(int id[], int size) {
 		}
 		if (wm->getBall().pos.dist(wm->ourRobot(id[0]).pos) < 8.5 && wm->getBall().pos.x > -Field::width/2 + Field::penaltyAwidth + 5) {
 			LOG("SPIN GOALIE");
-			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, -30);
-			else setRobotVel(id[0], 0, 30);
+			double spinnSpid{ 30 };
+			#ifndef YELLOW
+			spinnSpid *= -1;
+			#endif // !YELLOW
+			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, spinnSpid);
+			else setRobotVel(id[0], 0, -spinnSpid);
 		}
 
 		if (wm->getBall().pos.x > -Field::width / 2 + Field::penaltyAwidth + 50)
@@ -70,8 +78,12 @@ void Soccer::Defense(int id[], int size) {
 
 		if (wm->getBall().pos.dist(wm->ourRobot(id[0]).pos) < 8.5 && wm->getBall().pos.x > -Field::width / 2 + Field::penaltyAwidth + 5) {
 			LOG("SPIN GOALIE");
-			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, 30);
-			else setRobotVel(id[0], 0, -30);
+			double spinnSpid{ 30 };
+			#ifndef YELLOW
+			spinnSpid *= -1;
+			#endif // !YELLOW
+			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, spinnSpid);
+			else setRobotVel(id[0], 0, -spinnSpid);
 		}
 		break;
 	case 3:
