@@ -77,8 +77,8 @@ void Soccer::Goalie(int id) {
 		#ifndef YELLOW
 		spinnSpid *= -1;
 		#endif // !YELLOW
-		if (wm->getBall().pos.y > 0) setRobotVel(id, 0, spinnSpid);
-		else setRobotVel(id, 0, -spinnSpid);
+		if (wm->getBall().pos.y > 0) setRobotVel(id, 0, -spinnSpid);
+		else setRobotVel(id, 0, spinnSpid);
 	}
 
 }
