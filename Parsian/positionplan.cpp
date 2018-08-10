@@ -47,11 +47,11 @@ void Soccer::Pos(int id[], int size) {
 
 			if (wm->getBall().pos.y > 0) {
 				gotoPoint(upper, rcsc::Vector2D(ballPos.x, Field::penaltyBheight / 2 + 25), rcsc::Vector2D(1000, 0));
-				gotoPoint(lower, rcsc::Vector2D(-60, 0), rcsc::Vector2D(0, 1000));
+				gotoPoint(lower, rcsc::Vector2D(60, 0), rcsc::Vector2D(0, 1000));
 			}
 			else {
 				gotoPoint(lower, rcsc::Vector2D(ballPos.x, -Field::penaltyBheight / 2 - 25), rcsc::Vector2D(1000, 0));
-				gotoPoint(upper, rcsc::Vector2D(-60, 0), rcsc::Vector2D(0, 1000));
+				gotoPoint(upper, rcsc::Vector2D(60, 0), rcsc::Vector2D(0, 1000));
 
 			}
 

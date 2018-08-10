@@ -278,7 +278,7 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 		robots[3].pos.y = 70;
 		robots[3].rotation = 180;
 		robots[4].pos.x = 75;
-		robots[4].pos.y = 90;
+		robots[4].pos.y = 40;
 		robots[4].rotation = 180;
 		break;
 
