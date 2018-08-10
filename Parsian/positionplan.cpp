@@ -33,7 +33,7 @@ void Soccer::Pos(int id[], int size) {
 			spin(id[1], Field::oppGoal(), 30);
 		if (dist0 < 40)
 			spin(id[0], Field::oppGoal(), 30);
-		if (wm->getBall().pos.x < -50) {
+		if (wm->getBall().pos.x > 50) {
 			// matching
 			int lower = -1, upper = -1;
 			if (wm->ourRobot(id[0]).pos.y > 0) {

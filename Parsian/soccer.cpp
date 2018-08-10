@@ -101,83 +101,6 @@ void Soccer::setFormerRobots(Robot* robots) {
 	playonFlag = false;
 	playonCounter = 0;
 	LOG("FORMER");
-#ifdef YELLOW
-	switch (wm->gs) {
-	case GameMode::FreeBall_LeftTop:
-		// Goalie -> Center Of Goal
-		robots[0].pos.x = 5; robots[0].pos.y = 90 + Field::penaltyAheight / 2; robots[0].rotation = 90;
-		// Behind Ball
-		robots[1].pos.x = Field::FBHWidthOffSet - Field::markerFBOffSet;  robots[1].pos.y = 180 - Field::FBHeightOffSet;  robots[1].rotation = 0;
-		// Others
-		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = 80; robots[2].rotation = 90;
-		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = 80; robots[3].rotation = 0;
-		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH + 20;  robots[4].pos.y = 80; robots[4].rotation = 90;
-
-		break;
-	case GameMode::FreeBall_LeftBot:
-		// Goalie -> Center Of Goal
-		robots[0].pos.x = 5; robots[0].pos.y = 90 - Field::penaltyAheight / 2; robots[0].rotation = 90;
-		// Behind Ball
-		robots[1].pos.x = Field::FBHWidthOffSet - Field::markerFBOffSet;  robots[1].pos.y = Field::FBHeightOffSet;  robots[1].rotation = 0;
-		// Others
-		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = 100; robots[2].rotation = 90;
-		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = 100; robots[3].rotation = 0;
-		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH + 20;  robots[4].pos.y = 100; robots[4].rotation = 90;
-		break;
-	case GameMode::OurKickOff:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 40;
-		robots[1].pos.y = 90;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 100;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 95;
-		robots[3].pos.y = 80;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 125;
-		robots[4].pos.y = 90;
-		robots[4].rotation = 0;
-		break;
-		break;
-	case GameMode::OppPenaltyKick:
-		// Goalie -> Center Of Goal
-		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 90;
-		// Others
-		robots[1].pos.x = 130;  robots[1].pos.y = 80;  robots[1].rotation = 0;
-		robots[2].pos.x = 130;  robots[2].pos.y = 100; robots[2].rotation = 0;
-		robots[3].pos.x = 130;  robots[3].pos.y = 60;  robots[3].rotation = 0;
-		robots[4].pos.x = 130;  robots[4].pos.y = 120; robots[4].rotation = 0;
-
-		break;
-	case GameMode::OppFreeKick:
-		// Goalie -> Center Of Goal
-		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 90;
-		// Others
-		robots[1].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[1].pos.y = Field::height / 2 + Field::penaltyAheight / 2 - ROBOT_HALF_WIDTH;  robots[1].rotation = 90;
-		robots[2].pos.x = Field::penaltyAwidth + ROBOT_HALF_WIDTH;  robots[2].pos.y = Field::height / 2 + -Field::penaltyAheight / 2 + ROBOT_HALF_WIDTH; robots[2].rotation = 90;
-		robots[3].pos.x = Field::penaltyBwidth - ROBOT_HALF_WIDTH;  robots[3].pos.y = Field::height / 2 + Field::penaltyBheight / 2 + ROBOT_HALF_WIDTH;  robots[3].rotation = 0;
-		robots[4].pos.x = Field::penaltyBwidth - ROBOT_HALF_WIDTH;  robots[4].pos.y = Field::height / 2 + -Field::penaltyBheight / 2 - ROBOT_HALF_WIDTH; robots[4].rotation = 0;
-
-		break;
-	case GameMode::OurGoalKick:
-		// Goalie -> Center Of Goal
-		robots[0].pos.x = 5; robots[0].pos.y = 90; robots[0].rotation = 0;
-		// Others
-		robots[1].pos.x = 5;  robots[1].pos.y = Field::height / 2 + Field::penaltyAheight / 2 + ROBOT_HALF_WIDTH;  robots[1].rotation = 0;
-		robots[2].pos.x = 5;  robots[2].pos.y = Field::height / 2 + -Field::penaltyAheight / 2 - ROBOT_HALF_WIDTH; robots[2].rotation = 0;
-		robots[3].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[3].pos.y = Field::height / 2 + Field::penaltyBheight / 2 - ROBOT_HALF_WIDTH;  robots[3].rotation = 0;
-		robots[4].pos.x = Field::penaltyBwidth + ROBOT_HALF_WIDTH;  robots[4].pos.y = Field::height / 2 + -Field::penaltyBheight / 2 + ROBOT_HALF_WIDTH; robots[4].rotation = 0;
-
-		break;
-
-	default: /* For Case That We Don't Put Our Robots First */
-		break;
-	}
-
-#else
 	switch (wm->gs) {
 	case GameMode::FreeBall_RightTop:
 		robots[0].pos.x = 215;
@@ -281,8 +204,6 @@ void Soccer::setFormerRobots(Robot* robots) {
 		break;
 	}
 
-#endif // YELLOW
-
 	LOG("FORMER END");
 }
 
@@ -290,118 +211,6 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 	playonFlag = false;
 	playonCounter = 0;
 	LOG("LATER");
-#ifdef YELLOW
-	switch (wm->gs) {
-	case GameMode::FreeBall_RightTop:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 80;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 25;
-		robots[1].pos.y = 30;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 22;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 60;
-		robots[3].pos.y = 100;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 80;
-		robots[4].pos.y = 130;
-		robots[4].rotation = 0;
-		break;
-	case GameMode::FreeBall_RightBot:
-
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 40;
-		robots[1].pos.y = 90;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 100;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 95;
-		robots[3].pos.y = 80;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 125;
-		robots[4].pos.y = 90;
-		robots[4].rotation = 0;
-		break;
-	case GameMode::OppKickOff:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 30;
-		robots[1].pos.y = 90;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 70;
-		robots[2].pos.y = 90;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 90;
-		robots[3].pos.y = 60;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 90;
-		robots[4].pos.y = 120;
-		robots[4].rotation = 0;
-		break;
-	case GameMode::OurPenaltyKick:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 80;
-		robots[1].pos.y = 90;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 100;
-		robots[2].pos.y = 100;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 100;
-		robots[3].pos.y = 80;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 160;
-		robots[4].pos.y = 90;
-		robots[4].rotation = 0;
-		break;
-
-		break;
-	case GameMode::OurFreeKick:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 30;
-		robots[1].pos.y = 100;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 50;
-		robots[2].pos.y = 65;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 70;
-		robots[3].pos.y = 40;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 90;
-		robots[4].pos.y = 130;
-		robots[4].rotation = 0;
-		break;
-	case GameMode::OppGoalKick:
-		robots[0].pos.x = 5;
-		robots[0].pos.y = 90;
-		robots[0].rotation = 90;
-		robots[1].pos.x = 80;
-		robots[1].pos.y = 50;
-		robots[1].rotation = 0;
-		robots[2].pos.x = 80;
-		robots[2].pos.y = 130;
-		robots[2].rotation = 0;
-		robots[3].pos.x = 100;
-		robots[3].pos.y = 60;
-		robots[3].rotation = 0;
-		robots[4].pos.x = 100;
-		robots[4].pos.y = 90;
-		robots[4].rotation = 0;
-		break;
-
-	default: /* For Case That We Put Our Robots First */
-		break;
-	}
-#else
 	switch (wm->gs) {
 	case GameMode::FreeBall_LeftTop:
 		robots[0].pos.x = 215;
@@ -512,7 +321,6 @@ void Soccer::setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3
 	default: /* For Case That We Put Our Robots First */
 		break;
 	}
-#endif
 	LOG("LATER END");
 }
 

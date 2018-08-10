@@ -26,6 +26,10 @@ void Soccer::Defense(int id[], int size) {
 			}
 		}
 
+		if (Field::oppPenaltyARect().contains(wm->ourRobot(id[0]).pos)) {
+			gotoPoint(0, rcsc::Vector2D(0, 0), rcsc::Vector2D(0, 1000));
+		}
+
 		if (wm->getBall().pos.dist(wm->ourRobot(id[0]).pos) < 8.5) {
 			LOG("SPIN GOALIE");
 			if (wm->getBall().pos.y > 0) setRobotVel(id[0], 0, 30);
