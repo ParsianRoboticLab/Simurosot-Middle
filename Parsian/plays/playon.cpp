@@ -4,7 +4,8 @@
 std::ifstream ifile;
 PID p;
 void Soccer::playon() {
-	Goalie(0);
+	int goalie_id = 0;
+	Goalie(goalie_id);
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 1; i < 5; i++) {
@@ -24,14 +25,14 @@ void Soccer::playon() {
 	if (wm->getBall().pos.x < -30) defenseNum = 3;
 	else if (wm->getBall().pos.x > 30) defenseNum = 1;
 	else defenseNum = 2;
-	defenseNum = 1;
+	//defenseNum = 1;
 	int defense[3] = { -1, -1, -1 };
 	rcsc::Vector2D poses[3] = { Field::ourGoal(), Field::ourGoalB(), Field::ourGoalT() };
 	for (int d = 0; d < defenseNum; d++) {
 		int bestID = -1;
 		int best = 100000000;
-		for (int i = 1; i < 5; i++) {
-			if (i == playmake) continue;
+		for (int i = 0; i < 5; i++) {
+			if (i == playmake || i == goalie_id) continue;
 			bool same = false;
 			for (int j = 0; j < 3; j++) if (defense[j] == i) same = true;
 			if (same) continue;
