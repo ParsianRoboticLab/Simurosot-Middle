@@ -31,40 +31,8 @@ void Soccer::Goalie(int id) {
 	rcsc::Vector2D targetVel = rcsc::Vector2D(0, 1000);
 	rcsc::Vector2D targetPos = rcsc::Vector2D(-Field::width / 2 + 2, y);
 	if (wm->ourRobot(id).pos.x > -Field::width / 2 + 5) targetPos = Field::ourGoal();
-	double pathdist = wm->ourRobot(id).pos.dist(targetPos);
-	double pathTh = -(targetPos - wm->ourRobot(id).pos).th().degree();
-	#ifndef YELLOW
-	pathTh *= -1;
-	#endif // !YELLOW
-	double angle{ fabs(wm->ourRobot(id).th - pathTh) };
-	#ifndef YELLOW
-	angle = 180 - angle;
-	#endif // !YELLOW
-	if (angle > 180)
-		angle -= 360;
-	if (angle < -180)
-		angle += 360;
-	angle = fabs(angle);
-	if (pathdist < 2) {
-		if (angle < 90) pathTh = 90;
-		else pathTh = -90;
-	}
 	if (!forward)
-	{
-		if (angle <= 15)
-		{
-			setRobotVel(id, pathdist*0.3, 0);
-		}
-		else if (angle >= 165 && angle <= 180) {
-			setRobotVel(id, -fabs(pathdist*0.3), 0);
-		}
-		else if (angle > 15 && angle <= 90) {
-			setRobotAng(id, pathTh);
-		}
-		else if (angle > 90 && angle < 165) {
-			setRobotAng(id, 180 + pathTh);
-		}
-	}
+		gotoPoint(id, targetPos, targetVel, 0.3);
 	else
 	{
 		kick(id, Field::oppGoal());
