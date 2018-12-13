@@ -14,6 +14,7 @@
 #include "server.h"
 #include "util/bangbang.h"
 #include "util/pid.h"
+#include "toml11/toml.hpp"
 
 #define LOG(A) *log << A << std::endl 
 #define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
@@ -46,6 +47,19 @@ c_macro->set_g(C.g()); \
 c_macro->set_a(C.a()); \
 }
 
+struct dynamic_reconfigure_values
+{
+	//[GoalKeeper]
+	int goalie_id;
+	//[PlayMake]
+	float playmake_change_cost;
+	//[Defense]
+	float critical_mode;
+	float non_threat_mode;
+	int critical_defense_num;
+	int non_threat_defense_num;
+	int normal_defense_num;
+};
 
 class Soccer
 {
@@ -59,6 +73,7 @@ public:
 	void setFormerRobots(Robot* robots);
 	void setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball);
 	void setBall(Vector3D* ball);
+	void dynamic_reconfigure();
 	void run(Robot* _robots);
 private:
 	const char* teamName;
@@ -133,5 +148,8 @@ private:
 	/** Kick **/
 	double pm_treshold;
 	int last_pm;
+
+	//dynamic reconfigure
+	dynamic_reconfigure_values conf_vals;
 };
 

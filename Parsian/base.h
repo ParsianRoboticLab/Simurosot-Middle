@@ -1,7 +1,7 @@
 #ifndef _BASE_HEADER_
 #define _BASE_HEADER_
 
-//#define YELLOW
+#define YELLOW
 
 const long ROBOT_COUNT = 5;
 const double PI = 3.1415926535;
