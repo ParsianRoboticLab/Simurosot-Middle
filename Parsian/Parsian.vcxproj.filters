@@ -37,6 +37,12 @@
     <Filter Include="Source Files\roles">
       <UniqueIdentifier>{eb9b726c-7b66-4bd0-a405-87f40911c4b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\toml11">
+      <UniqueIdentifier>{b1aee8df-89b8-42d2-bc4e-0be29016c68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\toml11\toml">
+      <UniqueIdentifier>{7c83129b-e1cb-405d-9d0d-2dfd8b2408bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -125,6 +131,57 @@
     </ClInclude>
     <ClInclude Include="server.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml.hpp">
+      <Filter>Header Files\toml11</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\combinator.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\datetime.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\exception.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\from_toml.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\get.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\lexer.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\parser.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\region.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\result.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\storage.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\string.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\to_toml.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\traits.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\types.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\utility.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
+    </ClInclude>
+    <ClInclude Include="toml11\toml\value.hpp">
+      <Filter>Header Files\toml11\toml</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -248,5 +305,36 @@
     <ClCompile Include="roles\goalie.cpp">
       <Filter>Source Files\roles</Filter>
     </ClCompile>
+    <ClCompile Include="skills\spin.cpp">
+      <Filter>Source Files\skills</Filter>
+    </ClCompile>
+    <ClCompile Include="skills\kick.cpp">
+      <Filter>Source Files\skills</Filter>
+    </ClCompile>
+    <ClCompile Include="positionplan.cpp">
+      <Filter>Source Files\plans</Filter>
+    </ClCompile>
+    <ClCompile Include="playmake.cpp">
+      <Filter>Source Files\plays</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="toml11\appveyor.yml">
+      <Filter>Header Files\toml11</Filter>
+    </None>
+    <None Include="toml11\LICENSE">
+      <Filter>Header Files\toml11</Filter>
+    </None>
+    <None Include="toml11\PROPOSAL.md">
+      <Filter>Header Files\toml11</Filter>
+    </None>
+    <None Include="toml11\README.md">
+      <Filter>Header Files\toml11</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="toml11\CMakeLists.txt">
+      <Filter>Header Files\toml11</Filter>
+    </Text>
   </ItemGroup>
 </Project>

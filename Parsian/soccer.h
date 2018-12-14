@@ -14,6 +14,7 @@
 #include "server.h"
 #include "util/bangbang.h"
 #include "util/pid.h"
+#include "toml11/toml.hpp"
 
 #define LOG(A) *log << A << std::endl 
 #define DEBUG(MSG,LVL) {Log* m_marcomsg = debugs->add_msgs();\
@@ -46,6 +47,19 @@ c_macro->set_g(C.g()); \
 c_macro->set_a(C.a()); \
 }
 
+struct dynamic_reconfigure_values
+{
+	//[GoalKeeper]
+	int goalie_id;
+	//[PlayMake]
+	float playmake_change_cost;
+	//[Defense]
+	float critical_mode;
+	float non_threat_mode;
+	int critical_defense_num;
+	int non_threat_defense_num;
+	int normal_defense_num;
+};
 
 class Soccer
 {
@@ -59,6 +73,7 @@ public:
 	void setFormerRobots(Robot* robots);
 	void setLaterRobots(Robot* robots, const Robot* oppRobots, const Vector3D& _ball);
 	void setBall(Vector3D* ball);
+	void dynamic_reconfigure();
 	void run(Robot* _robots);
 private:
 	const char* teamName;
@@ -109,14 +124,32 @@ private:
 	bool ballInOurSide;
 	int playonCounter;
 	bool playonFlag;
-	void Defense(Robot * robots, int size);
-
-	void Goalie(Robot * gk);
+	void Defense(int ids[], int size);
+	void Pos(int ids[], int size);
+	void PlayMake(int id);
+	
+	void Goalie(int id);
 
 	// SKILLS //
-	
+	void setRobotVel(int id, double v_tan, double w);
+	void setRobotAng(int id, double th);
+	double getRobotW(int id, double th);
+	//void setRobotPos(int id, double pos_tan);
+	//double getRobotvel_tan(int id, double pos_tan);
+	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp = 0.2);
 	/** GotoPoint **/
 	PID* posPID;
 	PID* angPID;
+
+	void spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel);
+	/** Spin **/
+
+	void kick(int id, const rcsc::Vector2D&  targetPos);
+	/** Kick **/
+	double pm_treshold;
+	int last_pm;
+
+	//dynamic reconfigure
+	dynamic_reconfigure_values conf_vals;
 };
 

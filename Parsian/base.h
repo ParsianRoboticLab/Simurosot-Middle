@@ -7,6 +7,10 @@ const long ROBOT_COUNT = 5;
 const double PI = 3.1415926535;
 const double ROBOT_HALF_WIDTH = 3.75;
 const double ROBOT_WIDTH = 7.5;
+const double vel_max = 4.65; // cm / cycle
+const double dec_max = 0.4; // cm / cycle^2
+const double acc_max = 0.2; // cm / cycle^2
+const double max_w = 53; // deg / cycle
 typedef struct
 {
 	double x, y, z;
