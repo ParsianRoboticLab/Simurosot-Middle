@@ -63,32 +63,6 @@ template<> ::WorldModel* Arena::CreateMaybeMessage<::WorldModel>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 
-enum Role {
-  UNKNOWN = 0,
-  GOALIE = 1,
-  DEFENSE = 2,
-  MARK = 3,
-  PLAYMAKE = 4,
-  SUPPORT = 5,
-  POSITION = 6,
-  Role_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  Role_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool Role_IsValid(int value);
-const Role Role_MIN = UNKNOWN;
-const Role Role_MAX = POSITION;
-const int Role_ARRAYSIZE = Role_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* Role_descriptor();
-inline const ::std::string& Role_Name(Role value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    Role_descriptor(), value);
-}
-inline bool Role_Parse(
-    const ::std::string& name, Role* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Role>(
-    Role_descriptor(), name, value);
-}
 enum GameState {
   PlayOn = 0,
   FreeBall_LeftTop = 1,
@@ -500,9 +474,9 @@ class WorldModel : public ::google::protobuf::Message /* @@protoc_insertion_poin
   const ::google::protobuf::RepeatedPtrField< ::MovingObject >&
       opp_robots() const;
 
-  // string mode = 6;
+  // string mode = 5;
   void clear_mode();
-  static const int kModeFieldNumber = 6;
+  static const int kModeFieldNumber = 5;
   const ::std::string& mode() const;
   void set_mode(const ::std::string& value);
   #if LANG_CXX11
@@ -532,9 +506,9 @@ class WorldModel : public ::google::protobuf::Message /* @@protoc_insertion_poin
   bool blue() const;
   void set_blue(bool value);
 
-  // .GameState gameState = 7;
+  // .GameState gameState = 6;
   void clear_gamestate();
-  static const int kGameStateFieldNumber = 7;
+  static const int kGameStateFieldNumber = 6;
   ::GameState gamestate() const;
   void set_gamestate(::GameState value);
 
@@ -930,7 +904,7 @@ inline void WorldModel::set_blue(bool value) {
   // @@protoc_insertion_point(field_set:WorldModel.blue)
 }
 
-// string mode = 6;
+// string mode = 5;
 inline void WorldModel::clear_mode() {
   mode_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -983,7 +957,7 @@ inline void WorldModel::set_allocated_mode(::std::string* mode) {
   // @@protoc_insertion_point(field_set_allocated:WorldModel.mode)
 }
 
-// .GameState gameState = 7;
+// .GameState gameState = 6;
 inline void WorldModel::clear_gamestate() {
   gamestate_ = 0;
 }
@@ -1011,11 +985,6 @@ inline void WorldModel::set_gamestate(::GameState value) {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::Role> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Role>() {
-  return ::Role_descriptor();
-}
 template <> struct is_proto_enum< ::GameState> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::GameState>() {

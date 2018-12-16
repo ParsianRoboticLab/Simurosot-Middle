@@ -3,6 +3,7 @@
 
 #include "geom.h"
 #include "base.h"
+#include "field.h"
 
 struct CMovingObject {
     rcsc::Vector2D pos, vel, acc;
@@ -50,12 +51,11 @@ public:
 	void update(const Environment* _env);
 
 private:
-    CMovingObject ball;
+    CMovingObject ball, lastBall;
     CRobot our[ROBOT_COUNT];
     CRobot opp[ROBOT_COUNT];
-    unsigned long long loop;
-
-	/// Tracker and Filters
-	
+	CRobot lastOur[ROBOT_COUNT];
+	CRobot lastOpp[ROBOT_COUNT];
+    unsigned long long loop;	
 };
 #endif // _WORLD_MODEL_HEADER_

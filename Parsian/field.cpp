@@ -17,7 +17,7 @@ const double Field::FBHWidthOffSet = 55;
 const double Field::markerFBOffSet = 25;
 const double Field::centerCircleRadius = 25;
 const double Field::cornerTriangleSide = 7;
-
+const double Field::pushingWidth = 8;
 Field::Field()
 {
 }

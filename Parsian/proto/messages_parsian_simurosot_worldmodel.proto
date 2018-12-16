@@ -14,15 +14,6 @@ message MovingObject {
 	float direction      = 6;
 }
 
-enum Role {
-	UNKNOWN  = 0;
-	GOALIE   = 1;
-	DEFENSE  = 2;
-	MARK     = 3;
-	PLAYMAKE = 4;
-	SUPPORT  = 5;
-	POSITION = 6;
-}
 
 enum GameState {
 	PlayOn             = 0;  
@@ -45,6 +36,6 @@ message WorldModel {
 	repeated MovingObject our_robots = 2;
 	repeated MovingObject opp_robots = 3;
 	bool blue = 4;
-	string mode = 6;
-	GameState gameState = 7;
+	string mode = 5;
+	GameState gameState = 6;
 }
