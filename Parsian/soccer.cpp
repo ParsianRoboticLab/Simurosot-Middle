@@ -37,7 +37,7 @@ Soccer::Soccer() {
 	last_pm = -1;
 
 	//Dynamic Reconfigure
-	dynamic_reconfigure();
+	//dynamic_reconfigure();
 
 }
 

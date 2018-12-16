@@ -26,7 +26,7 @@ void Soccer::playon() {
 	if (wm->getBall().pos.x < conf_vals.critical_mode) defenseNum = conf_vals.critical_defense_num;//dynamic_reconfigure//dynamic_reconfigure
 	else if (wm->getBall().pos.x > conf_vals.non_threat_mode) defenseNum = conf_vals.non_threat_defense_num;//dynamic_reconfigure//dynamic_reconfigure
 	else defenseNum = conf_vals.normal_defense_num;//dynamic_reconfigure
-	//defenseNum = 1;
+	defenseNum = 2;
 	int defense[3] = { -1, -1, -1 };
 	rcsc::Vector2D poses[3] = { Field::ourGoal(), Field::ourGoalB(), Field::ourGoalT() };
 	for (int d = 0; d < defenseNum; d++) {
