@@ -106,46 +106,35 @@ private:
 
 	// PLAYS
 	void playon();
-	void freeballLT();
-	void freeballLB();
-	void freeballRT();
-	void freeballRB();
-	void ourKO();
-	void oppKO();
-	void ourGK();
-	void oppGK();
-	void ourFK();
-	void oppFK();
-	void ourPK();
-	void oppPK();
-
 
 	//// PlayOn
 	bool ballInOurSide;
 	int playonCounter;
 	bool playonFlag;
+	
+	// PLANS
 	void Defense(int ids[], int size);
 	void Pos(int ids[], int size);
-	void PlayMake(int id);
 	
+	// ROLES
+	void PlayMake(int id);
 	void Goalie(int id);
 
 	// SKILLS //
 	void setRobotVel(int id, double v_tan, double w);
 	void setRobotAng(int id, double th);
 	double getRobotW(int id, double th);
-	//void setRobotPos(int id, double pos_tan);
-	//double getRobotvel_tan(int id, double pos_tan);
-	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp = 0.2);
+	
 	/** GotoPoint **/
+	void gotoPoint(int id, const rcsc::Vector2D&  targetPos, const rcsc::Vector2D& targetVel, double kp = 0.2);
 	PID* posPID;
 	PID* angPID;
 
-	void spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel);
 	/** Spin **/
+	void spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel);
 
-	void kick(int id, const rcsc::Vector2D&  targetPos);
 	/** Kick **/
+	void kick(int id, const rcsc::Vector2D&  targetPos);
 	double pm_treshold;
 	int last_pm;
 

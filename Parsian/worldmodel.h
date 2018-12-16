@@ -56,9 +56,6 @@ private:
     CRobot opp[ROBOT_COUNT];
 	CRobot lastOur[ROBOT_COUNT];
 	CRobot lastOpp[ROBOT_COUNT];
-    unsigned long long loop;
-
-	/// Tracker and Filters
-	
+    unsigned long long loop;	
 };
 #endif // _WORLD_MODEL_HEADER_

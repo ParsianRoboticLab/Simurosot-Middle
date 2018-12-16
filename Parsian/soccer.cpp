@@ -381,6 +381,7 @@ void vec2D2vec2D(const rcsc::Vector2D& v1, Vector2D* v2) {
 	v2->set_x(v1.getX());
 	v2->set_y(v1.getY());
 }
+
 double lastX = 0;
 double vx = 0;
 void Soccer::fillmsg() {
@@ -460,8 +461,6 @@ void Soccer::fillmsg() {
 		vec2D2vec2D(wopr.acc, oppR->mutable_acc());
 
 	}
-
-
 }
 
 void Soccer::sendmsg() {
@@ -527,32 +526,3 @@ double Soccer::getRobotW(int id, double th)
 	return -1 * angPID[id].lastOut;
 }
 
-/*void Soccer::setRobotPos(int id, double pos_tan)
-{
-posPID[id].kp = 0.2;
-posPID[id].ki = 0.0;
-posPID[id].kd = 0.0;
-double diff{ wm->ourRobot(1).pos.x - pos_tan };
-if (fabs(diff) > 3) {
-posPID[id].run(diff);
-setRobotVel(1, -posPID[id].lastOut, 0);
-}
-else {
-setRobotVel(1, 0, 0);
-}
-}*/
-
-/*double Soccer::getRobotvel_tan(int id, double pos_tan)
-{
-posPID[id].kp = 0.2;
-posPID[id].ki = 0.0;
-posPID[id].kd = 0.0;
-double diff{ wm->ourRobot(1).pos.x - pos_tan };
-if (fabs(diff) > 3) {
-posPID[id].run(diff);
-return -1*posPID[id].lastOut;
-}
-else {
-return 0;
-}
-}*/

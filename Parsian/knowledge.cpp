@@ -45,7 +45,4 @@ void getRobotWheel(double w, double vel_tan, double& right_wheel, double& left_w
 		left_wheel = 150;
 		right_wheel *= k;
 	}
-
-	
-
 }
