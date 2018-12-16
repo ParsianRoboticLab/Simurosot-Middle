@@ -31,22 +31,18 @@ void Soccer::Goalie(int id) {
 	rcsc::Vector2D targetVel = rcsc::Vector2D(0, 1000);
 	rcsc::Vector2D targetPos = rcsc::Vector2D(-Field::width / 2 + 2, y);
 	if (wm->ourRobot(id).pos.x > -Field::width / 2 + 5) targetPos = Field::ourGoal();
-	if (!forward)
+	
+	if (!forward) {
 		gotoPoint(id, targetPos, targetVel, 0.3);
-	else
-	{
+	} else {
 		kick(id, Field::oppGoal());
 	}
 
 	// SPIN
 	if (wm->getBall().pos.dist(wm->ourRobot(id).pos) < 8.5 && wm->getBall().vel.length() < 2) {
-		LOG("SPIN GOALIE");
 		double spinnSpid{ 30 };
-		#ifndef YELLOW
-		spinnSpid *= -1;
-		#endif // !YELLOW
-		if (wm->getBall().pos.y > 0) setRobotVel(id, 0, spinnSpid);
-		else setRobotVel(id, 0, -spinnSpid);
+		if (wm->getBall().pos.y > 0) spin(id, spinnSpid);
+		else spin(id, -spinnSpid);
 	}
 
 }
