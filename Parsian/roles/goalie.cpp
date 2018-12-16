@@ -40,9 +40,7 @@ void Soccer::Goalie(int id) {
 
 	// SPIN
 	if (wm->getBall().pos.dist(wm->ourRobot(id).pos) < 8.5 && wm->getBall().vel.length() < 2) {
-		double spinnSpid{ 30 };
-		if (wm->getBall().pos.y > 0) spin(id, spinnSpid);
-		else spin(id, -spinnSpid);
+		spin(id, wm->getBall().pos, 30);
 	}
 
 }
