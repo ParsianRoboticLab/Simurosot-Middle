@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "../soccer.h"
-#include "../util/bangbang.h"
 #include "../util/pid.h"
 
 void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {
