@@ -254,42 +254,6 @@
     <ClCompile Include="worldmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="plays\freeball_lb.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\freeball_lt.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\freeball_rb.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\freeball_rt.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\oppfk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\oppgk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\oppko.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\opppk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\ourfk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\ourgk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\ourko.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\ourpk.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
     <ClCompile Include="plays\playon.cpp">
       <Filter>Source Files\plays</Filter>
     </ClCompile>
