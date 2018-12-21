@@ -369,3 +369,5 @@ ASALocalRun/
 
 .vscode/*
 logs/log*
+conf.txt
+*.rlg
