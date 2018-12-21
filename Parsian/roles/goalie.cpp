@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../soccer.h"
+#include "../soccer/soccer.h"
 
 void Soccer::Goalie(int id) {
 	rcsc::Vector2D ballPos{wm->getBall().pos + wm->getBall().vel*5};

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../soccer.h"
+#include "../soccer/soccer.h"
 #include "../util/pid.h"
 
 void Soccer::spin(int id, const rcsc::Vector2D&  targetPos, const double &targetVel) {

@@ -1,7 +1,7 @@
 #ifndef _FIELD_HEADER
 #define _FIELD_HEADER
 
-#include "geom.h"
+#include "../geom/geom.h"
 
 
 class Field {

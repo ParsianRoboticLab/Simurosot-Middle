@@ -23,7 +23,7 @@
     <ProjectGuid>{8F9EB2A6-9200-4D57-A90E-14693FEB6660}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Parsian</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,10 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="base.h" />
-    <ClInclude Include="server.h" />
-    <ClInclude Include="field.h" />
-    <ClInclude Include="geom.h" />
+    <ClInclude Include="geom\geom.h" />
     <ClInclude Include="geom\angle_deg.h" />
     <ClInclude Include="geom\circle_2d.h" />
     <ClInclude Include="geom\convex_hull.h" />
@@ -171,38 +168,23 @@
     <ClInclude Include="geom\size_2d.h" />
     <ClInclude Include="geom\triangle_2d.h" />
     <ClInclude Include="geom\vector_2d.h" />
-    <ClInclude Include="knowledge.h" />
-    <ClInclude Include="net\src\msock.h" />
     <ClInclude Include="parsian.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_data_wrapper.pb.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_debugs.pb.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_detection.pb.h" />
     <ClInclude Include="proto\messages_parsian_simurosot_worldmodel.pb.h" />
-    <ClInclude Include="soccer.h" />
+    <ClInclude Include="soccer\soccer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="toml11\toml.hpp" />
-    <ClInclude Include="toml11\toml\combinator.hpp" />
-    <ClInclude Include="toml11\toml\datetime.hpp" />
-    <ClInclude Include="toml11\toml\exception.hpp" />
-    <ClInclude Include="toml11\toml\from_toml.hpp" />
-    <ClInclude Include="toml11\toml\get.hpp" />
-    <ClInclude Include="toml11\toml\lexer.hpp" />
-    <ClInclude Include="toml11\toml\parser.hpp" />
-    <ClInclude Include="toml11\toml\region.hpp" />
-    <ClInclude Include="toml11\toml\result.hpp" />
-    <ClInclude Include="toml11\toml\storage.hpp" />
-    <ClInclude Include="toml11\toml\string.hpp" />
-    <ClInclude Include="toml11\toml\to_toml.hpp" />
-    <ClInclude Include="toml11\toml\traits.hpp" />
-    <ClInclude Include="toml11\toml\types.hpp" />
-    <ClInclude Include="toml11\toml\utility.hpp" />
-    <ClInclude Include="toml11\toml\value.hpp" />
-    <ClInclude Include="worldmodel.h" />
+    <ClInclude Include="util\base.h" />
+    <ClInclude Include="util\field.h" />
+    <ClInclude Include="util\knowledge.h" />
+    <ClInclude Include="util\pid.h" />
+    <ClInclude Include="util\server.h" />
+    <ClInclude Include="util\worldmodel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="field.cpp" />
     <ClCompile Include="geom\angle_deg.cpp" />
     <ClCompile Include="geom\circle_2d.cpp" />
     <ClCompile Include="geom\convex_hull.cpp" />
@@ -215,38 +197,29 @@
     <ClCompile Include="geom\segment_2d.cpp" />
     <ClCompile Include="geom\triangle_2d.cpp" />
     <ClCompile Include="geom\vector_2d.cpp" />
-    <ClCompile Include="knowledge.cpp" />
-    <ClCompile Include="net\src\msock.cpp" />
     <ClCompile Include="parsian.cpp" />
     <ClCompile Include="plans\defenseplan.cpp" />
-    <ClCompile Include="plays\playon.cpp" />
-    <ClCompile Include="positionplan.cpp" />
+    <ClCompile Include="plans\positionplan.cpp" />
     <ClCompile Include="proto\messages_parsian_simurosot_data_wrapper.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_debugs.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_detection.pb.cc" />
     <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc" />
     <ClCompile Include="roles\goalie.cpp" />
+    <ClCompile Include="roles\playmake.cpp" />
     <ClCompile Include="skills\gotopoint.cpp" />
     <ClCompile Include="skills\kick.cpp" />
     <ClCompile Include="skills\spin.cpp" />
-    <ClCompile Include="soccer.cpp" />
-    <ClCompile Include="playmake.cpp" />
+    <ClCompile Include="soccer\playon.cpp" />
+    <ClCompile Include="soccer\soccer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="worldmodel.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="toml11\appveyor.yml" />
-    <None Include="toml11\LICENSE" />
-    <None Include="toml11\PROPOSAL.md" />
-    <None Include="toml11\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="toml11\CMakeLists.txt" />
+    <ClCompile Include="util\field.cpp" />
+    <ClCompile Include="util\knowledge.cpp" />
+    <ClCompile Include="util\worldmodel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

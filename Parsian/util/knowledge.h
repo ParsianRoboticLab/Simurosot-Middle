@@ -1,11 +1,11 @@
 #ifndef _KNOWLEDGE_HEADER
 #define _KNOWLEDGE_HEADER
 
-#include "util/base.h"
-#include "geom/geom.h"
+#include "base.h"
+#include "../geom/geom.h"
 #include "worldmodel.h"
 #include "field.h"
-#include "til\pid.h"
+#include "pid.h"
 
 
 double ballPossession(const CWorldModel* _wm); // 0 means fully for them and 1 means fully for us

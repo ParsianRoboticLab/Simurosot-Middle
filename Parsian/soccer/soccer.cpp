@@ -36,8 +36,6 @@ Soccer::Soccer() {
 	angPID = new PID[ROBOT_COUNT];
 	last_pm = -1;
 
-	//Dynamic Reconfigure
-	//dynamic_reconfigure();
 
 }
 
@@ -339,25 +337,6 @@ void Soccer::setBall(Vector3D* ball) {
 #endif
 	}
 	LOG("SET BALL END");
-}
-
-void Soccer::dynamic_reconfigure()
-{
-	std::ifstream ifs("dynamic_reconfigure.toml");
-	const auto data = toml::parse(ifs);
-	//[GoalKeeper]
-	const auto GoalKeeper = toml::get<toml::Table>(data.at("GoalKeeper"));
-	conf_vals.goalie_id = toml::get<std::int64_t>(GoalKeeper.at("goalie_id"));
-	//[PlayMake]
-	const auto PlayMake = toml::get<toml::Table>(data.at("PlayMake"));
-	conf_vals.playmake_change_cost = toml::get<std::float_t>(PlayMake.at("playmake_change_cost"));
-	//[Defense]
-	const auto Defense = toml::get<toml::Table>(data.at("Defense"));
-	conf_vals.critical_mode = toml::get<std::float_t>(Defense.at("critical_mode"));
-	conf_vals.non_threat_mode = toml::get<std::float_t>(Defense.at("non_threat_mode"));
-	conf_vals.critical_defense_num = toml::get<std::int64_t>(Defense.at("critical_defense_num"));
-	conf_vals.non_threat_defense_num = toml::get<std::int64_t>(Defense.at("non_threat_defense_num"));
-	conf_vals.normal_defense_num = toml::get<std::int64_t>(Defense.at("normal_defense_num"));
 }
 
 /**

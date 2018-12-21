@@ -25,23 +25,26 @@
     <Filter Include="Source Files\proto">
       <UniqueIdentifier>{8df82b25-0b63-419d-bc14-0da4e04b7e82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\plays">
-      <UniqueIdentifier>{762f0782-81b8-4217-9de0-7eaca5100b3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\plans">
-      <UniqueIdentifier>{4f55ebe0-9dab-43fb-8e52-d6463500e134}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\skills">
       <UniqueIdentifier>{46e07058-bf0f-4665-98d4-9bb74d7a67f2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\roles">
       <UniqueIdentifier>{eb9b726c-7b66-4bd0-a405-87f40911c4b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\toml11">
-      <UniqueIdentifier>{b1aee8df-89b8-42d2-bc4e-0be29016c68b}</UniqueIdentifier>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{556859ec-19e0-43f1-abfe-210d01762bfd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\toml11\toml">
-      <UniqueIdentifier>{7c83129b-e1cb-405d-9d0d-2dfd8b2408bc}</UniqueIdentifier>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{8bb29e3f-9eb0-465c-b1fa-43d8b19500b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\soccer">
+      <UniqueIdentifier>{2ceceaf2-da95-4ae4-919e-b5141d426de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\plans">
+      <UniqueIdentifier>{4f55ebe0-9dab-43fb-8e52-d6463500e134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\soccer">
+      <UniqueIdentifier>{762f0782-81b8-4217-9de0-7eaca5100b3a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -65,12 +68,6 @@
     </ClInclude>
     <ClInclude Include="proto\messages_parsian_simurosot_worldmodel.pb.h">
       <Filter>Header Files\proto</Filter>
-    </ClInclude>
-    <ClInclude Include="net\src\msock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="soccer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="geom\angle_deg.h">
       <Filter>Header Files\geom</Filter>
@@ -114,74 +111,29 @@
     <ClInclude Include="geom\vector_2d.h">
       <Filter>Header Files\geom</Filter>
     </ClInclude>
-    <ClInclude Include="base.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="util\pid.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="field.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="util\base.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="knowledge.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="geom\geom.h">
+      <Filter>Header Files\geom</Filter>
     </ClInclude>
-    <ClInclude Include="worldmodel.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="util\field.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="geom.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="util\knowledge.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="server.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="util\server.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="toml11\toml.hpp">
-      <Filter>Header Files\toml11</Filter>
+    <ClInclude Include="util\worldmodel.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="toml11\toml\combinator.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\datetime.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\exception.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\from_toml.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\get.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\lexer.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\parser.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\region.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\result.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\storage.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\string.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\to_toml.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\traits.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\types.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\utility.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
-    </ClInclude>
-    <ClInclude Include="toml11\toml\value.hpp">
-      <Filter>Header Files\toml11\toml</Filter>
+    <ClInclude Include="soccer\soccer.h">
+      <Filter>Header Files\soccer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,12 +157,6 @@
     </ClCompile>
     <ClCompile Include="proto\messages_parsian_simurosot_worldmodel.pb.cc">
       <Filter>Source Files\proto</Filter>
-    </ClCompile>
-    <ClCompile Include="net\src\msock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="soccer.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="geom\angle_deg.cpp">
       <Filter>Source Files\geom</Filter>
@@ -248,18 +194,6 @@
     <ClCompile Include="geom\vector_2d.cpp">
       <Filter>Source Files\geom</Filter>
     </ClCompile>
-    <ClCompile Include="knowledge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="worldmodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="plays\playon.cpp">
-      <Filter>Source Files\plays</Filter>
-    </ClCompile>
-    <ClCompile Include="field.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="plans\defenseplan.cpp">
       <Filter>Source Files\plans</Filter>
     </ClCompile>
@@ -275,30 +209,26 @@
     <ClCompile Include="skills\kick.cpp">
       <Filter>Source Files\skills</Filter>
     </ClCompile>
-    <ClCompile Include="positionplan.cpp">
+    <ClCompile Include="roles\playmake.cpp">
+      <Filter>Source Files\roles</Filter>
+    </ClCompile>
+    <ClCompile Include="plans\positionplan.cpp">
       <Filter>Source Files\plans</Filter>
     </ClCompile>
-    <ClCompile Include="playmake.cpp">
-      <Filter>Source Files\plays</Filter>
+    <ClCompile Include="util\worldmodel.cpp">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="toml11\appveyor.yml">
-      <Filter>Header Files\toml11</Filter>
-    </None>
-    <None Include="toml11\LICENSE">
-      <Filter>Header Files\toml11</Filter>
-    </None>
-    <None Include="toml11\PROPOSAL.md">
-      <Filter>Header Files\toml11</Filter>
-    </None>
-    <None Include="toml11\README.md">
-      <Filter>Header Files\toml11</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="toml11\CMakeLists.txt">
-      <Filter>Header Files\toml11</Filter>
-    </Text>
+    <ClCompile Include="util\knowledge.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\field.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="soccer\soccer.cpp">
+      <Filter>Source Files\soccer</Filter>
+    </ClCompile>
+    <ClCompile Include="soccer\playon.cpp">
+      <Filter>Source Files\soccer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

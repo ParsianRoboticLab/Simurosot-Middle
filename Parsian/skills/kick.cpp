@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../soccer.h"
+#include "../soccer/soccer.h"
 #include "../util/pid.h"
 
 void Soccer::kick(int id, const rcsc::Vector2D&  targetPos) {

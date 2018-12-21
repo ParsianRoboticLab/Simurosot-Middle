@@ -16,11 +16,8 @@
 #include <thread>
 
 #include "proto/messages_parsian_simurosot_data_wrapper.pb.h"
-#include "soccer.h"
-#include "base.h"
-extern "C" { 
-#include "net/src/msock.h" 
-}
+#include "soccer/soccer.h"
+#include "util/base.h"
 
 #include <windows.h>
 

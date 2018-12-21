@@ -1,17 +1,15 @@
 #include "stdafx.h"
-#include "../soccer.h"
+#include "soccer.h"
 
-std::ifstream ifile;
-PID p;
 void Soccer::playon() {
-	int goalie_id = 0;//dynamic_reconfigure
+	int goalie_id = 0;
 	Goalie(goalie_id);
 	int playmake = -1;
 	double pm_cost = 1000000000.0;
 	for (int i = 0; i < 5; i++) {
 		if (i == goalie_id)	continue;
 		double t_cost = wm->ourRobot(i).pos.dist(wm->getBall().pos + wm->getBall().vel + rcsc::Vector2D(-20, 0));
-		if (i == last_pm) t_cost -= 10;//dynamic_reconfigure
+		if (i == last_pm) t_cost -= 10;
 		if (wm->ourRobot(i).pos.x > wm->getBall().pos.x + 10) t_cost += 10000;
 		if (t_cost < pm_cost) {
 			pm_cost = t_cost;
@@ -23,10 +21,10 @@ void Soccer::playon() {
 	PlayMake(playmake);
 	
 	int defenseNum = -1;
-	if (wm->getBall().pos.x < -30) defenseNum = 2;//dynamic_reconfigure//dynamic_reconfigure
-	else if (wm->getBall().pos.x > 30) defenseNum = 2;//dynamic_reconfigure//dynamic_reconfigure
-	else defenseNum = 1;//dynamic_reconfigure
-	defenseNum = 2;
+	if (wm->getBall().pos.x < -30) defenseNum = 2;
+	else if (wm->getBall().pos.x > 30) defenseNum = 2;
+	else defenseNum = 1;
+
 	int defense[3] = { -1, -1, -1 };
 	rcsc::Vector2D poses[3] = { Field::ourGoal(), Field::ourGoalB(), Field::ourGoalT() };
 	for (int d = 0; d < defenseNum; d++) {

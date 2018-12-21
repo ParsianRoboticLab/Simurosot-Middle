@@ -1,7 +1,7 @@
 #ifndef _WORLD_MODEL_HEADER_
 #define _WORLD_MODEL_HEADER_
 
-#include "geom.h"
+#include "../geom/geom.h"
 #include "base.h"
 #include "field.h"
 
