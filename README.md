@@ -58,20 +58,6 @@ Visual Studio Version: 2013 or later
 Before start please make sure that you have the main simulator and also installed it correctly in `C:/Strategy`
 
 
-### Initial Setup
-
-Some projects require initial configuration (e.g. access tokens or keys, `npm i`).
-This is the section where you would document those requirements.
-
-
-## Features
-
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
-
-
 ## Contributing
 
 When you publish something open source, one of the greatest motivations is that
