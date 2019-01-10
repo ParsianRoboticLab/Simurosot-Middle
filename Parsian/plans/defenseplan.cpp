@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../soccer.h"
+#include "../soccer/soccer.h"
 
 void Soccer::Defense(int id[], int size) {
 	
