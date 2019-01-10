@@ -1,5 +1,6 @@
 # Simurosot-Middle
 [![CodeFactor](https://www.codefactor.io/repository/github/parsianroboticlab/simurosot-middle/badge)](https://www.codefactor.io/repository/github/parsianroboticlab/simurosot-middle)
+[![Build status](https://ci.appveyor.com/api/projects/status/h6plv0b1bq7bjy15?svg=true)](https://ci.appveyor.com/project/mahi97/simurosot-middle)
 =======
 > A Base-Code for Internation Fira Robotic Competition Soccer Simulation League (5 vs 5)
 
