@@ -22,11 +22,9 @@ project
 │        │   Parsian.vcxproj // Visual Studio Project
 │        └───geom
 │        │ 
-│        └───net
-│        │ 
 │        └───plans
 │        │ 
-│        └───plays
+│        └───soccer
 │        │ 
 │        └───roles
 │        │ 
